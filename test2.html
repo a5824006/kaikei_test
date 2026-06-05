@@ -121,7 +121,7 @@
       margin: 12px 0;
       align-items: stretch;
     }
-    .axis-matrix span {
+    .axis-matrix > span {
       border: 1px solid var(--line);
       border-radius: 8px;
       background: #fff;
@@ -449,7 +449,7 @@
         width: 100%;
         gap: 5px;
       }
-      .axis-matrix span {
+      .axis-matrix > span {
         padding: 8px 5px;
         font-size: .84rem;
         line-height: 1.45;
@@ -543,22 +543,22 @@
         <article class="figure-card">
           <h3>連結は「グループを1社として見る」</h3>
           <div class="formula-chain" aria-label="連結会計の見方">
-            <div class="formula-part">親会社</div>
+            <div class="formula-part phrase-cell"><span class="phrase">親会社</span></div>
             <div class="formula-op">+</div>
-            <div class="formula-part">子会社</div>
+            <div class="formula-part phrase-cell"><span class="phrase">子会社</span></div>
             <div class="formula-op">=</div>
-            <div class="formula-part equity">企業グループ</div>
+            <div class="formula-part equity phrase-cell"><span class="phrase">企業</span><span class="phrase">グループ</span></div>
           </div>
           <p>個別会社の足し算だけではなく、内部取引を消して、外部から見たグループ全体の実態に直す。</p>
         </article>
         <article class="figure-card">
           <h3>税務は「会計利益を税金用に直す」</h3>
           <div class="formula-chain" aria-label="課税所得の見方">
-            <div class="formula-part">会計利益</div>
+            <div class="formula-part phrase-cell"><span class="phrase">会計</span><span class="phrase">利益</span></div>
             <div class="formula-op">±</div>
-            <div class="formula-part debt">税務調整</div>
+            <div class="formula-part debt phrase-cell"><span class="phrase">税務</span><span class="phrase">調整</span></div>
             <div class="formula-op">=</div>
-            <div class="formula-part equity">課税所得</div>
+            <div class="formula-part equity phrase-cell"><span class="phrase">課税</span><span class="phrase">所得</span></div>
           </div>
           <p>企業会計の利益に、益金・損金の考え方で加算や減算をして、税金を計算するための所得を出す。</p>
         </article>
@@ -675,11 +675,11 @@
         <article class="figure-card">
           <h3>内部牽制は「一人に集中させない」</h3>
           <div class="formula-chain" aria-label="内部牽制の見方">
-            <div class="formula-part">実行</div>
+            <div class="formula-part phrase-cell"><span class="phrase">実行</span></div>
             <div class="formula-op">/</div>
-            <div class="formula-part">承認</div>
+            <div class="formula-part phrase-cell"><span class="phrase">承認</span></div>
             <div class="formula-op">/</div>
-            <div class="formula-part equity">記録・確認</div>
+            <div class="formula-part equity phrase-cell"><span class="phrase">記録</span><span class="phrase">確認</span></div>
           </div>
           <p>金銭や在庫など不正が起きやすいものは、実行・承認・記録を分けて、ミスや不正を見つけやすくする。</p>
         </article>
@@ -736,22 +736,22 @@
         <article class="figure-card">
           <h3>戦略は外と内をつなぐ</h3>
           <div class="formula-chain" aria-label="戦略策定の流れ">
-            <div class="formula-part">外部環境</div>
+            <div class="formula-part phrase-cell"><span class="phrase">外部</span><span class="phrase">環境</span></div>
             <div class="formula-op">+</div>
-            <div class="formula-part">内部環境</div>
+            <div class="formula-part phrase-cell"><span class="phrase">内部</span><span class="phrase">環境</span></div>
             <div class="formula-op">→</div>
-            <div class="formula-part equity">基本的手段</div>
+            <div class="formula-part equity phrase-cell"><span class="phrase">基本的</span><span class="phrase">手段</span></div>
           </div>
           <p>外部の機会・脅威と、自社の強み・弱みを見て、目的達成のための基本的手段を決める。</p>
         </article>
         <article class="figure-card">
           <h3>資源配分は「金のなる木」から</h3>
           <div class="formula-chain" aria-label="PPMの資金配分">
-            <div class="formula-part">金のなる木</div>
+            <div class="formula-part phrase-cell"><span class="phrase">金の</span><span class="phrase">なる木</span></div>
             <div class="formula-op">→</div>
-            <div class="formula-part">問題児</div>
+            <div class="formula-part phrase-cell"><span class="phrase">問題児</span></div>
             <div class="formula-op">→</div>
-            <div class="formula-part equity">花形</div>
+            <div class="formula-part equity phrase-cell"><span class="phrase">花形</span></div>
           </div>
           <p>PPMでは、資金を生む事業から将来性のある事業へ配分し、次の成長事業を育てる。</p>
         </article>
@@ -839,11 +839,11 @@
           <span class="axis">既存市場</span>
           <span class="axis">新規市場</span>
           <span class="axis">既存製品</span>
-          <span class="growth phrase-cell"><span class="phrase">市場浸透</span><span class="phrase">シェア拡大・リピート増</span></span>
-          <span class="phrase-cell"><span class="phrase">市場開拓</span><span class="phrase">新地域・新ターゲット</span></span>
+          <span class="growth phrase-cell"><span class="phrase">市場浸透</span><span class="phrase">シェア拡大</span><span class="phrase">リピート増</span></span>
+          <span class="phrase-cell"><span class="phrase">市場開拓</span><span class="phrase">新地域</span><span class="phrase">新ターゲット</span></span>
           <span class="axis">新規製品</span>
-          <span class="phrase-cell"><span class="phrase">製品開発</span><span class="phrase">新機能・ライン追加</span></span>
-          <span class="growth phrase-cell"><span class="phrase">多角化</span><span class="phrase">新製品を新市場へ</span></span>
+          <span class="phrase-cell"><span class="phrase">製品開発</span><span class="phrase">新機能</span><span class="phrase">ライン追加</span></span>
+          <span class="growth phrase-cell"><span class="phrase">多角化</span><span class="phrase">新製品を</span><span class="phrase">新市場へ</span></span>
         </div>
       </div>
       <p>横軸は市場、縦軸は製品。既存同士なら深掘り、新規同士ならリスクの大きい多角化。</p>
@@ -856,9 +856,9 @@
           <span class="axis">相対的市場シェア 低</span>
           <span class="axis">市場成長率 高</span>
           <span class="growth phrase-cell"><span class="phrase">花形</span><span class="phrase">維持・育成</span></span>
-          <span class="phrase-cell"><span class="phrase">問題児</span><span class="phrase">見極め・選択と集中</span></span>
+          <span class="phrase-cell"><span class="phrase">問題児</span><span class="phrase">見極め</span><span class="phrase">選択と集中</span></span>
           <span class="axis">市場成長率 低</span>
-          <span class="harvest phrase-cell"><span class="phrase">金のなる木</span><span class="phrase">収穫して資金供給</span></span>
+          <span class="harvest phrase-cell"><span class="phrase">金のなる木</span><span class="phrase">収穫して</span><span class="phrase">資金供給</span></span>
           <span class="phrase-cell"><span class="phrase">負け犬</span><span class="phrase">撤退検討</span></span>
         </div>
       </div>
@@ -936,11 +936,11 @@
         <article class="figure-card">
           <h3>株主価値の位置づけ</h3>
           <div class="formula-chain" aria-label="株主価値の計算">
-            <div class="formula-part">企業価値</div>
+            <div class="formula-part phrase-cell"><span class="phrase">企業</span><span class="phrase">価値</span></div>
             <div class="formula-op">-</div>
-            <div class="formula-part debt">負債</div>
+            <div class="formula-part debt phrase-cell"><span class="phrase">負債</span></div>
             <div class="formula-op">=</div>
-            <div class="formula-part equity">株主価値</div>
+            <div class="formula-part equity phrase-cell"><span class="phrase">株主</span><span class="phrase">価値</span></div>
           </div>
           <p>企業全体の価値から、銀行などへ返す負債を引いた残りが株主の取り分になる。</p>
         </article>
@@ -962,9 +962,9 @@
         <article class="figure-card">
           <h3>企業価値ドライバー</h3>
           <div class="driver-grid" aria-label="企業価値ドライバー">
-            <div class="driver"><strong>1</strong><span class="phrase">税引後利益の</span><span class="phrase">増加</span></div>
-            <div class="driver"><strong>2</strong><span class="phrase">資本コストの</span><span class="phrase">低下</span></div>
-            <div class="driver"><strong>3</strong><span class="phrase">無駄な投資の</span><span class="phrase">抑制</span></div>
+            <div class="driver"><strong>1</strong><span class="phrase">税引後</span><span class="phrase">利益の</span><span class="phrase">増加</span></div>
+            <div class="driver"><strong>2</strong><span class="phrase">資本</span><span class="phrase">コストの</span><span class="phrase">低下</span></div>
+            <div class="driver"><strong>3</strong><span class="phrase">無駄な</span><span class="phrase">投資の</span><span class="phrase">抑制</span></div>
           </div>
           <p>売上を多く・早く・長く増やし、無駄な費用や価値に貢献しない投資を抑えることが企業価値につながる。</p>
         </article>
