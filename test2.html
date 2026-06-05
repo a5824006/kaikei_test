@@ -31,12 +31,24 @@
     h1 { margin: 0; font-size: 2.05rem; line-height: 1.25; letter-spacing: 0; }
     .lead { max-width: 780px; margin: 14px 0 0; color: var(--muted); }
     .layout {
+      position: relative;
       display: grid;
       grid-template-columns: 260px minmax(0, 1fr);
       gap: 28px;
       max-width: 1080px;
       margin: 0 auto;
       padding: 28px 24px 58px;
+    }
+    .layout:has(.toc-state:checked) {
+      grid-template-columns: 48px minmax(0, 1fr);
+      max-width: 1240px;
+    }
+    .toc-state {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
     }
     .side-nav {
       position: sticky;
@@ -48,9 +60,45 @@
       box-shadow: var(--shadow);
       padding: 14px;
     }
-    .side-nav h2 {
+    .toc-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
       margin: 0 0 8px;
+    }
+    .side-nav h2 {
+      margin: 0;
       font-size: .95rem;
+    }
+    .toc-collapse {
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      cursor: pointer;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .toc-collapse::before { content: "<"; }
+    .layout:has(.toc-state:checked) .side-nav {
+      padding: 8px;
+    }
+    .layout:has(.toc-state:checked) .toc-header {
+      justify-content: center;
+      margin: 0;
+    }
+    .layout:has(.toc-state:checked) .toc-title,
+    .layout:has(.toc-state:checked) .side-nav a {
+      display: none;
+    }
+    .layout:has(.toc-state:checked) .toc-collapse::before {
+      content: ">";
     }
     .side-nav a {
       display: block;
@@ -138,6 +186,50 @@
     }
     .axis-matrix .harvest {
       background: #eef6f5;
+    }
+    .ppm-detail-table {
+      display: grid;
+      grid-template-columns: minmax(150px, .95fr) repeat(4, minmax(120px, 1fr));
+      gap: 7px;
+      min-width: 760px;
+      margin: 12px 0;
+      padding: 10px;
+      background-image:
+        linear-gradient(#e8eeee 1px, transparent 1px),
+        linear-gradient(90deg, #e8eeee 1px, transparent 1px);
+      background-size: 22px 22px;
+    }
+    .ppm-detail-table > span {
+      display: grid;
+      place-items: center;
+      min-height: 64px;
+      border: 1px solid var(--ink);
+      background: #fff;
+      padding: 8px;
+      text-align: center;
+      font-weight: 900;
+      line-height: 1.45;
+    }
+    .ppm-detail-table .ppm-head {
+      min-height: 40px;
+      border: 0;
+      background: transparent;
+      font-size: 1.05rem;
+    }
+    .ppm-detail-table .ppm-kind {
+      border-color: #9b9b9b;
+      background: #969696;
+      color: #fff;
+    }
+    .ppm-detail-table .ppm-kind strong {
+      display: block;
+      font-size: 1.15rem;
+      line-height: 1.2;
+    }
+    .ppm-detail-table .ppm-kind small {
+      display: block;
+      font-size: .82rem;
+      line-height: 1.45;
     }
     .flow {
       display: grid;
@@ -443,6 +535,11 @@
       .grid { grid-template-columns: 1fr; }
       .diagram { grid-template-columns: 1fr auto 1fr; }
       .wide-diagram { overflow-x: visible; }
+      .wide-diagram:has(.ppm-detail-table) {
+        overflow-x: auto;
+        margin-inline: -4px;
+        padding: 0 4px 6px;
+      }
       .axis-matrix {
         grid-template-columns: minmax(62px, .68fr) repeat(2, minmax(0, 1fr));
         min-width: 0;
@@ -453,6 +550,19 @@
         padding: 8px 5px;
         font-size: .84rem;
         line-height: 1.45;
+      }
+      .ppm-detail-table {
+        min-width: 680px;
+        gap: 5px;
+        padding: 8px;
+      }
+      .ppm-detail-table > span {
+        min-height: 58px;
+        padding: 7px 5px;
+        font-size: .86rem;
+      }
+      .ppm-detail-table .ppm-head {
+        font-size: .92rem;
       }
       .flow {
         display: block;
@@ -516,8 +626,12 @@
   </header>
 
   <div class="layout">
+    <input class="toc-state" type="checkbox" id="toc-state" aria-label="目次をたたむ">
     <nav class="side-nav" aria-label="目次">
-      <h2>目次</h2>
+      <div class="toc-header">
+        <h2 class="toc-title">目次</h2>
+        <label class="toc-collapse" for="toc-state" title="目次をたたむ"></label>
+      </div>
       <a href="#status">作成状況</a>
       <a href="#class7">第7回 連結・税務</a>
       <a href="#class8-internal">第8回 内部統制</a>
@@ -849,6 +963,7 @@
       <p>横軸は市場、縦軸は製品。既存同士なら深掘り、新規同士ならリスクの大きい多角化。</p>
 
       <h3>PPMと資源配分</h3>
+      <p>PPMは、事業を「市場成長率」と「相対的市場シェア」で分け、どこに資金を入れ、どこから資金を回収するかを考える表です。</p>
       <div class="wide-diagram">
         <div class="axis-matrix" aria-label="PPMの4象限">
           <span class="axis"></span>
@@ -860,6 +975,39 @@
           <span class="axis">市場成長率 低</span>
           <span class="harvest phrase-cell"><span class="phrase">金のなる木</span><span class="phrase">収穫して</span><span class="phrase">資金供給</span></span>
           <span class="phrase-cell"><span class="phrase">負け犬</span><span class="phrase">撤退検討</span></span>
+        </div>
+      </div>
+      <div class="wide-diagram">
+        <div class="ppm-detail-table" aria-label="PPMの4分類と資源配分">
+          <span class="ppm-head"></span>
+          <span class="ppm-head">支出</span>
+          <span class="ppm-head">収入</span>
+          <span class="ppm-head">キャッシュ・フロー</span>
+          <span class="ppm-head">戦略的課題</span>
+
+          <span class="ppm-kind"><strong>花形</strong><small>成長率: 高<br>シェア: 高</small></span>
+          <span>多い</span>
+          <span>多い</span>
+          <span class="phrase-cell"><span class="phrase">収支</span><span class="phrase">トントン</span></span>
+          <span class="phrase-cell"><span class="phrase">シェア拡大</span><span class="phrase">・維持</span></span>
+
+          <span class="ppm-kind"><strong>金のなる木</strong><small>成長率: 低<br>シェア: 高</small></span>
+          <span>少ない</span>
+          <span>多い</span>
+          <span>+</span>
+          <span>収穫</span>
+
+          <span class="ppm-kind"><strong>問題児</strong><small>成長率: 高<br>シェア: 低</small></span>
+          <span>多い</span>
+          <span>少ない</span>
+          <span>-</span>
+          <span class="phrase-cell"><span class="phrase">将来性の</span><span class="phrase">見極め</span><span class="phrase">・選択と集中</span></span>
+
+          <span class="ppm-kind"><strong>負け犬</strong><small>成長率: 低<br>シェア: 低</small></span>
+          <span>少ない</span>
+          <span>少ない</span>
+          <span class="phrase-cell"><span class="phrase">収支</span><span class="phrase">トントン</span><span class="phrase">or マイナス</span></span>
+          <span>撤退の検討</span>
         </div>
       </div>
       <p>PPMは、各事業がどれだけキャッシュを生むか、どれだけキャッシュを必要とするかを見る図。基本は、金のなる木から得た資金を問題児に投じ、将来の花形へ育てる。</p>
