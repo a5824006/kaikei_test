@@ -289,6 +289,42 @@
       color: var(--accent);
       font-size: 1.25rem;
     }
+    .quad-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin: 12px 0;
+    }
+    .quad-cell {
+      min-height: 64px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+      padding: 8px;
+      text-align: center;
+      font-weight: 900;
+      line-height: 1.45;
+    }
+    .quad-term {
+      display: inline-block;
+      white-space: nowrap;
+      margin: 0 .08em;
+    }
+    .phrase-cell {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0 .18em;
+    }
+    .phrase {
+      display: inline-block;
+      white-space: nowrap;
+    }
     .chain-diagram {
       display: grid;
       grid-template-columns: repeat(5, minmax(84px, 1fr));
@@ -534,7 +570,7 @@
           <div class="diagram" aria-label="連結財務諸表のイメージ">
             <div class="box">親会社</div>
             <div class="arrow">+</div>
-            <div class="box">子会社<br>関連会社</div>
+            <div class="box phrase-cell"><span class="phrase">子会社</span><span class="phrase">関連会社</span></div>
           </div>
           <p>個別財務諸表だけではグループ全体の利益や状態が見えないため、連結財務諸表が必要になる。</p>
         </article>
@@ -616,12 +652,24 @@
       <div class="figure-grid">
         <article class="figure-card">
           <h3>内部統制の4目的</h3>
-          <ol>
-            <li>業務の有効性・効率性</li>
-            <li>財務報告の信頼性</li>
-            <li>法令等の遵守</li>
-            <li>資産の保全</li>
-          </ol>
+          <div class="quad-grid" aria-label="内部統制の4目的">
+            <div class="quad-cell">
+              <span class="quad-term">業務の</span>
+              <span class="quad-term">有効性・効率性</span>
+            </div>
+            <div class="quad-cell">
+              <span class="quad-term">財務報告の</span>
+              <span class="quad-term">信頼性</span>
+            </div>
+            <div class="quad-cell">
+              <span class="quad-term">法令等の</span>
+              <span class="quad-term">遵守</span>
+            </div>
+            <div class="quad-cell">
+              <span class="quad-term">資産の</span>
+              <span class="quad-term">保全</span>
+            </div>
+          </div>
           <p>内部統制は、業務をうまく回し、信頼できる情報を出し、法律を守り、会社の資産を守るための仕組み。</p>
         </article>
         <article class="figure-card">
@@ -791,11 +839,11 @@
           <span class="axis">既存市場</span>
           <span class="axis">新規市場</span>
           <span class="axis">既存製品</span>
-          <span class="growth">市場浸透<br>シェア拡大・リピート増</span>
-          <span>市場開拓<br>新地域・新ターゲット</span>
+          <span class="growth phrase-cell"><span class="phrase">市場浸透</span><span class="phrase">シェア拡大・リピート増</span></span>
+          <span class="phrase-cell"><span class="phrase">市場開拓</span><span class="phrase">新地域・新ターゲット</span></span>
           <span class="axis">新規製品</span>
-          <span>製品開発<br>新機能・ライン追加</span>
-          <span class="growth">多角化<br>新製品を新市場へ</span>
+          <span class="phrase-cell"><span class="phrase">製品開発</span><span class="phrase">新機能・ライン追加</span></span>
+          <span class="growth phrase-cell"><span class="phrase">多角化</span><span class="phrase">新製品を新市場へ</span></span>
         </div>
       </div>
       <p>横軸は市場、縦軸は製品。既存同士なら深掘り、新規同士ならリスクの大きい多角化。</p>
@@ -807,11 +855,11 @@
           <span class="axis">相対的市場シェア 高</span>
           <span class="axis">相対的市場シェア 低</span>
           <span class="axis">市場成長率 高</span>
-          <span class="growth">花形<br>維持・育成</span>
-          <span>問題児<br>見極め・選択と集中</span>
+          <span class="growth phrase-cell"><span class="phrase">花形</span><span class="phrase">維持・育成</span></span>
+          <span class="phrase-cell"><span class="phrase">問題児</span><span class="phrase">見極め・選択と集中</span></span>
           <span class="axis">市場成長率 低</span>
-          <span class="harvest">金のなる木<br>収穫して資金供給</span>
-          <span>負け犬<br>撤退検討</span>
+          <span class="harvest phrase-cell"><span class="phrase">金のなる木</span><span class="phrase">収穫して資金供給</span></span>
+          <span class="phrase-cell"><span class="phrase">負け犬</span><span class="phrase">撤退検討</span></span>
         </div>
       </div>
       <p>PPMは、各事業がどれだけキャッシュを生むか、どれだけキャッシュを必要とするかを見る図。基本は、金のなる木から得た資金を問題児に投じ、将来の花形へ育てる。</p>
@@ -899,9 +947,9 @@
         <article class="figure-card">
           <h3>現在価値のイメージ</h3>
           <div class="pv-steps" aria-label="現在価値のイメージ">
-            <div class="pv-card">現在<br>約90.9万円</div>
+            <div class="pv-card phrase-cell"><span class="phrase">現在</span><span class="phrase">約90.9万円</span></div>
             <div class="formula-op">→</div>
-            <div class="pv-card future">1年後<br>100万円</div>
+            <div class="pv-card future phrase-cell"><span class="phrase">1年後</span><span class="phrase">100万円</span></div>
           </div>
           <p>年10%で運用できるなら、1年後の100万円は今の約90.9万円と同じ価値になる。将来のお金は割り引いて考える。</p>
         </article>
@@ -914,9 +962,9 @@
         <article class="figure-card">
           <h3>企業価値ドライバー</h3>
           <div class="driver-grid" aria-label="企業価値ドライバー">
-            <div class="driver"><strong>1</strong>税引後利益の増加</div>
-            <div class="driver"><strong>2</strong>資本コストの低下</div>
-            <div class="driver"><strong>3</strong>無駄な投資の抑制</div>
+            <div class="driver"><strong>1</strong><span class="phrase">税引後利益の</span><span class="phrase">増加</span></div>
+            <div class="driver"><strong>2</strong><span class="phrase">資本コストの</span><span class="phrase">低下</span></div>
+            <div class="driver"><strong>3</strong><span class="phrase">無駄な投資の</span><span class="phrase">抑制</span></div>
           </div>
           <p>売上を多く・早く・長く増やし、無駄な費用や価値に貢献しない投資を抑えることが企業価値につながる。</p>
         </article>
