@@ -365,20 +365,30 @@
     }
     .driver-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: 1fr;
       gap: 8px;
       margin: 12px 0;
     }
     .driver {
+      display: grid;
+      grid-template-columns: 36px minmax(0, 1fr);
+      gap: 10px;
+      align-items: center;
       border: 1px solid var(--line);
       border-radius: 8px;
       background: #fff;
       padding: 12px;
-      text-align: center;
+      text-align: left;
       font-weight: 900;
     }
+    .driver .phrase-cell {
+      justify-content: flex-start;
+      margin-top: 0;
+      line-height: 1.55;
+    }
     .driver strong {
-      display: block;
+      display: grid;
+      place-items: center;
       color: var(--accent);
       font-size: 1.25rem;
     }
@@ -1167,7 +1177,7 @@
         <li>購買物流</li>
         <li>製造</li>
         <li>出荷物流</li>
-        <li>販売・マーケ</li>
+        <li><span class="phrase-cell"><span class="phrase">販売</span><span class="phrase">・</span><span class="phrase">マーケ</span><span class="phrase">ティング</span></span></li>
         <li>サービス</li>
       </ol>
       <div class="notice">
@@ -1210,9 +1220,9 @@
         <article class="figure-card">
           <h3>企業価値ドライバー</h3>
           <div class="driver-grid" aria-label="企業価値ドライバー">
-            <div class="driver"><strong>1</strong><span class="phrase">税引後</span><span class="phrase">利益の</span><span class="phrase">増加</span></div>
-            <div class="driver"><strong>2</strong><span class="phrase">資本</span><span class="phrase">コストの</span><span class="phrase">低下</span></div>
-            <div class="driver"><strong>3</strong><span class="phrase">無駄な</span><span class="phrase">投資の</span><span class="phrase">抑制</span></div>
+            <div class="driver"><strong>1</strong><span class="phrase-cell"><span class="phrase">税引</span><span class="phrase">後</span><span class="phrase">利益</span><span class="phrase">の</span><span class="phrase">増加</span></span></div>
+            <div class="driver"><strong>2</strong><span class="phrase-cell"><span class="phrase">資本コスト</span><span class="phrase">の低下</span></span></div>
+            <div class="driver"><strong>3</strong><span class="phrase-cell"><span class="phrase">無駄な投資</span><span class="phrase">の抑制</span></span></div>
           </div>
           <p>売上を多く・早く・長く増やし、無駄な費用や価値に貢献しない投資を抑えることが企業価値につながる。</p>
         </article>
