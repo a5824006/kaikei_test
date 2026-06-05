@@ -436,6 +436,43 @@
       text-align: center;
       font-weight: 800;
     }
+    .chain-list {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 8px;
+      margin: 12px 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: chain;
+    }
+    .chain-list li {
+      counter-increment: chain;
+      display: grid;
+      place-items: center;
+      min-height: 58px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+      padding: 8px;
+      text-align: center;
+      font-weight: 800;
+    }
+    .chain-list li::before {
+      content: counter(chain);
+      display: inline-grid;
+      place-items: center;
+      width: 24px;
+      height: 24px;
+      margin-bottom: 4px;
+      border-radius: 999px;
+      background: #fff;
+      color: var(--accent);
+      font-size: .86rem;
+      line-height: 1;
+    }
+    .chain-list li + li {
+      margin-top: 0;
+    }
     .box {
       min-height: 72px;
       display: grid;
@@ -652,6 +689,9 @@
       }
       .chain-diagram {
         grid-template-columns: repeat(5, minmax(84px, 1fr));
+      }
+      .chain-list {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -1123,13 +1163,13 @@
 
       <h3>価値連鎖分析</h3>
       <p>価値連鎖は、製品の開発・製造・販売など、顧客が製品を手に取るまでの活動をつなげて見る考え方です。どの活動にコストや収益が発生しているかを把握し、コスト優位性や差別化の方向を考えます。</p>
-      <div class="chain-diagram" aria-label="価値連鎖の主活動">
-        <span>購買物流</span>
-        <span>製造</span>
-        <span>出荷物流</span>
-        <span>販売・マーケ</span>
-        <span>サービス</span>
-      </div>
+      <ol class="chain-list" aria-label="価値連鎖の主活動">
+        <li>購買物流</li>
+        <li>製造</li>
+        <li>出荷物流</li>
+        <li>販売・マーケ</li>
+        <li>サービス</li>
+      </ol>
       <div class="notice">
         <p><strong>覚え方:</strong> 価値連鎖の図はP/Lのように見る。売上から活動ごとの費用を引くと利益が残るので、どこでコストを下げるか、どこで価値を上げるかを考える。</p>
       </div>
