@@ -133,6 +133,21 @@
       padding: 14px 16px;
       margin: 14px 0;
     }
+    .formula {
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft-2);
+      padding: 10px 12px;
+      margin: 8px 0;
+      text-align: center;
+      font-weight: 900;
+      line-height: 1.55;
+    }
+    .formula.phrase-cell {
+      column-gap: .35em;
+      row-gap: 0;
+    }
     .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
     .card {
       border: 1px solid var(--line);
@@ -208,7 +223,6 @@
       text-align: center;
       font-weight: 900;
       line-height: 1.45;
-    }
       vertical-align: middle;
     }
     .ppm-detail-table th {
@@ -228,9 +242,15 @@
       line-height: 1.2;
     }
     .ppm-detail-table .ppm-kind small {
-      display: block;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      column-gap: .25em;
       font-size: .82rem;
       line-height: 1.45;
+    }
+    .ppm-detail-table .ppm-kind small span {
+      white-space: nowrap;
     }
     .flow {
       display: grid;
@@ -417,6 +437,11 @@
       white-space: nowrap;
       margin: 0;
     }
+    .quad-label {
+      flex: 0 0 100%;
+      display: inline-block;
+      white-space: nowrap;
+    }
     .phrase-cell {
       display: flex;
       flex-wrap: wrap;
@@ -482,6 +507,182 @@
     }
     .chain-list li + li {
       margin-top: 0;
+    }
+    .metric-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 12px 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      overflow: hidden;
+      font-size: .92rem;
+    }
+    .metric-table th,
+    .metric-table td {
+      border-bottom: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      padding: 9px 10px;
+      vertical-align: top;
+    }
+    .metric-table th {
+      background: var(--soft);
+      color: var(--accent);
+      text-align: left;
+      font-weight: 900;
+    }
+    .metric-table td:last-child,
+    .metric-table th:last-child {
+      border-right: 0;
+    }
+    .metric-table tr:last-child td {
+      border-bottom: 0;
+    }
+    .metric-name {
+      font-weight: 900;
+    }
+    .metric-table .phrase-cell {
+      justify-content: flex-start;
+    }
+    .timeline {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+      gap: 8px;
+      align-items: center;
+      margin: 12px 0;
+    }
+    .timeline-step {
+      min-height: 64px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+      padding: 8px;
+      text-align: center;
+      font-weight: 900;
+    }
+    .bs-map {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin: 12px 0;
+    }
+    .bs-map div {
+      min-height: 70px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 8px;
+      text-align: center;
+      font-weight: 900;
+    }
+    .bs-map .short {
+      background: var(--soft);
+    }
+    .bs-map .long {
+      background: var(--soft-2);
+    }
+    .bs-map .phrase-cell {
+      justify-content: center;
+    }
+    .exam-list {
+      display: grid;
+      gap: 10px;
+      margin: 12px 0;
+    }
+    .exam-list details {
+      margin: 0;
+    }
+    .exam-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 14px;
+    }
+    .exam-card h3 {
+      margin-top: 0;
+    }
+    .exam-card details {
+      margin-top: 12px;
+    }
+    .exam-card details.hint summary {
+      background: #fffaf0;
+      color: #6e5600;
+    }
+    .exam-card details.hint[open] summary {
+      background: var(--soft-2);
+    }
+    .hint-body {
+      padding: 12px 14px 14px;
+      color: var(--muted);
+    }
+    .exam-figure {
+      margin: 10px 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 12px;
+    }
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 10px 0;
+    }
+    .case-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 10px;
+    }
+    .case-card strong {
+      display: block;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .case-card p {
+      margin: 0;
+      font-weight: 800;
+    }
+    .case-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0;
+      background: #fff;
+      font-size: .92rem;
+    }
+    .case-table th,
+    .case-table td {
+      border: 1px solid var(--line);
+      padding: 8px;
+      text-align: center;
+      vertical-align: middle;
+    }
+    .case-table th {
+      background: var(--soft);
+      color: var(--accent);
+      font-weight: 900;
+    }
+    .case-table .positive {
+      color: var(--accent);
+      font-weight: 900;
+    }
+    .case-table .negative {
+      color: var(--accent-2);
+      font-weight: 900;
+    }
+    .case-label {
+      display: inline-block;
+      border-radius: 999px;
+      background: var(--soft-2);
+      color: #6e5600;
+      padding: 2px 8px;
+      font-size: .82rem;
+      font-weight: 900;
     }
     .box {
       min-height: 72px;
@@ -703,6 +904,50 @@
       .chain-list {
         grid-template-columns: 1fr;
       }
+      .metric-table,
+      .metric-table tbody,
+      .metric-table tr,
+      .metric-table td {
+        display: block;
+        width: 100%;
+      }
+      .metric-table thead {
+        display: none;
+      }
+      .metric-table tr {
+        border-bottom: 1px solid var(--line);
+      }
+      .metric-table tr:last-child {
+        border-bottom: 0;
+      }
+      .metric-table td {
+        display: grid;
+        grid-template-columns: 7.5em minmax(0, 1fr);
+        gap: 8px;
+        border-right: 0;
+        text-align: left;
+      }
+      .metric-table td::before {
+        content: attr(data-label);
+        color: var(--accent);
+        font-weight: 900;
+      }
+      .timeline {
+        grid-template-columns: 1fr;
+      }
+      .bs-map {
+        grid-template-columns: 1fr;
+      }
+      .case-grid {
+        grid-template-columns: 1fr;
+      }
+      .case-table {
+        font-size: .84rem;
+      }
+      .case-table th,
+      .case-table td {
+        padding: 6px 5px;
+      }
     }
   </style>
 </head>
@@ -721,7 +966,7 @@
     <div class="hero">
       <p class="eyebrow">第7回から第10回</p>
       <h1>会計学 第2回テスト対策</h1>
-      <p class="lead">第7回から第9回は講義資料ベースで具体化済み。第10回は、講義資料が来たら差し替える仮置きです。</p>
+      <p class="lead">第1回テストの傾向に合わせて、図から読み取る問題と「なぜ」を説明する問題を厚めにした復習ページです。</p>
     </div>
   </header>
 
@@ -732,24 +977,18 @@
         <h2 class="toc-title">目次</h2>
         <label class="toc-collapse" for="toc-state" title="目次をたたむ"></label>
       </div>
-      <a href="#status">作成状況</a>
       <a href="#class7">第7回 連結・税務</a>
       <a href="#class8-internal">第8回 内部統制</a>
       <a href="#class8-strategy">第8回 経営戦略</a>
       <a href="#class9-strategy">第9回 戦略の続き</a>
       <a href="#class9-value">第9回 企業価値</a>
-      <a href="#class10">第10回 仮置き</a>
+      <a href="#class10">第10回 財務諸表分析</a>
+      <a href="#visual-questions">具体値から判定</a>
+      <a href="#why-questions">なぜを問う問題</a>
       <a href="#questions">予想される記述</a>
     </nav>
 
     <main>
-    <section id="status">
-      <h2>作成状況</h2>
-      <div class="notice">
-        <p><strong>第7回から第9回は講義資料反映済み。</strong> 第10回は、講義資料が揃い次第、用語カード・図解・予想問題を差し替えます。</p>
-      </div>
-    </section>
-
     <section id="class7">
       <h2>第7回 連結会計と税務会計</h2>
       <h3>図で見る第7回</h3>
@@ -857,7 +1096,7 @@
 
     <section id="class8-internal">
       <h2>第8回 内部統制</h2>
-      <p>内部統制は、会社の不正や誤りを防ぎ、財務報告を信頼できるものにするための仕組みです。第8回資料では、エンロンや東芝の不適切会計をきっかけに、なぜ内部統制が必要かを説明していました。</p>
+      <p>内部統制は、会社の不正や誤りを防ぎ、財務報告を信頼できるものにするための仕組みです。エンロンや東芝の不適切会計のように、会社情報への信頼が崩れる問題を防ぐために重要です。</p>
       <div class="notice">
         <p><strong>記述の芯:</strong> 内部統制は「ミス・不正を防ぐルール」だけではなく、業務効率、財務報告、法令遵守、資産保全を支える会社全体の仕組み。</p>
       </div>
@@ -867,21 +1106,17 @@
         <article class="figure-card">
           <h3>内部統制の4目的</h3>
           <div class="quad-grid" aria-label="内部統制の4目的">
-            <div class="quad-cell">
-              <span class="quad-term">業務の</span>
-              <span class="quad-term">有効性・効率性</span>
+            <div class="quad-cell phrase-cell">
+              <span class="phrase">業務</span><span class="phrase">の</span><span class="phrase">有効性</span><span class="phrase">・</span><span class="phrase">効率性</span>
             </div>
-            <div class="quad-cell">
-              <span class="quad-term">財務報告の</span>
-              <span class="quad-term">信頼性</span>
+            <div class="quad-cell phrase-cell">
+              <span class="phrase">財務</span><span class="phrase">報告</span><span class="phrase">の</span><span class="phrase">信頼性</span>
             </div>
-            <div class="quad-cell">
-              <span class="quad-term">法令等の</span>
-              <span class="quad-term">遵守</span>
+            <div class="quad-cell phrase-cell">
+              <span class="phrase">法令等</span><span class="phrase">の</span><span class="phrase">遵守</span>
             </div>
-            <div class="quad-cell">
-              <span class="quad-term">資産の</span>
-              <span class="quad-term">保全</span>
+            <div class="quad-cell phrase-cell">
+              <span class="phrase">資産</span><span class="phrase">の</span><span class="phrase">保全</span>
             </div>
           </div>
           <p>内部統制は、業務をうまく回し、信頼できる情報を出し、法律を守り、会社の資産を守るための仕組み。</p>
@@ -1090,28 +1325,28 @@
           </thead>
           <tbody>
             <tr>
-              <th scope="row" class="ppm-kind"><strong>花形</strong><small>成長率: 高<br>シェア: 高</small></th>
+              <th scope="row" class="ppm-kind"><strong>花形</strong><small><span>成長率: 高</span><span>シェア: 高</span></small></th>
               <td data-label="支出">多い</td>
               <td data-label="収入">多い</td>
               <td data-label="キャッシュ・フロー"><span class="phrase-cell"><span class="phrase">収支</span><span class="phrase">トントン</span></span></td>
               <td data-label="戦略的課題"><span class="phrase-cell"><span class="phrase">シェア拡大</span><span class="phrase">・維持</span></span></td>
             </tr>
             <tr>
-              <th scope="row" class="ppm-kind"><strong>金のなる木</strong><small>成長率: 低<br>シェア: 高</small></th>
+              <th scope="row" class="ppm-kind"><strong>金のなる木</strong><small><span>成長率: 低</span><span>シェア: 高</span></small></th>
               <td data-label="支出">少ない</td>
               <td data-label="収入">多い</td>
               <td data-label="キャッシュ・フロー">+</td>
               <td data-label="戦略的課題">収穫</td>
             </tr>
             <tr>
-              <th scope="row" class="ppm-kind"><strong>問題児</strong><small>成長率: 高<br>シェア: 低</small></th>
+              <th scope="row" class="ppm-kind"><strong>問題児</strong><small><span>成長率: 高</span><span>シェア: 低</span></small></th>
               <td data-label="支出">多い</td>
               <td data-label="収入">少ない</td>
               <td data-label="キャッシュ・フロー">-</td>
               <td data-label="戦略的課題"><span class="phrase-cell"><span class="phrase">将来性の</span><span class="phrase">見極め</span><span class="phrase">・選択と集中</span></span></td>
             </tr>
             <tr>
-              <th scope="row" class="ppm-kind"><strong>負け犬</strong><small>成長率: 低<br>シェア: 低</small></th>
+              <th scope="row" class="ppm-kind"><strong>負け犬</strong><small><span>成長率: 低</span><span>シェア: 低</span></small></th>
               <td data-label="支出">少ない</td>
               <td data-label="収入">少ない</td>
               <td data-label="キャッシュ・フロー"><span class="phrase-cell"><span class="phrase">収支</span><span class="phrase">トントン</span><span class="phrase">or マイナス</span></span></td>
@@ -1213,8 +1448,8 @@
         </article>
         <article class="figure-card">
           <h3>企業価値の計算構造</h3>
-          <span class="formula">企業価値 = 将来CFの現在価値の合計</span>
-          <span class="formula">企業価値 = Σ CF_i ÷ (1 + 資本コスト)^i</span>
+          <span class="formula phrase-cell"><span class="phrase">企業価値 =</span><span class="phrase">将来CFの</span><span class="phrase">現在価値の合計</span></span>
+          <span class="formula phrase-cell"><span class="phrase">企業価値 =</span><span class="phrase">Σ CF_i</span><span class="phrase">÷</span><span class="phrase">(1 + 資本コスト)^i</span></span>
           <p>将来のキャッシュフローが大きいほど、早く入るほど、長く続くほど企業価値は高くなる。</p>
         </article>
         <article class="figure-card">
@@ -1231,8 +1466,8 @@
       <div class="grid">
         <article class="card">
           <h3>フリーキャッシュフロー</h3>
-          <p>ある期間の現金流入から、費用・税金・投資などの現金流出を差し引いた現金余剰。講義資料では、売上をすべて現金で受け取り、費用・税金・投資をすべて現金で支払う前提で説明されていました。</p>
-          <span class="formula">FCF = 売上 - 費用 - 税金 - 投資</span>
+          <p>ある期間の現金流入から、費用・税金・投資などの現金流出を差し引いた現金余剰。売上をすべて現金で受け取り、費用・税金・投資をすべて現金で支払うと考えるとイメージしやすい。</p>
+          <span class="formula phrase-cell"><span class="phrase">FCF =</span><span class="phrase">売上</span><span class="phrase">-</span><span class="phrase">費用</span><span class="phrase">-</span><span class="phrase">税金</span><span class="phrase">-</span><span class="phrase">投資</span></span>
         </article>
         <article class="card">
           <h3>資本コスト</h3>
@@ -1242,7 +1477,7 @@
         <article class="card">
           <h3>加重平均資本コスト</h3>
           <p>負債と自己資本のコストを、資本構成比で加重平均したもの。負債コストは自己資本コストより低くなりやすいが、借入が増えすぎるとリスクも上がる。</p>
-          <span class="formula">WACC = 負債比率 × 負債コスト + 株主資本比率 × 株主資本コスト</span>
+          <span class="formula phrase-cell"><span class="phrase">WACC =</span><span class="phrase">負債比率</span><span class="phrase">×</span><span class="phrase">負債コスト</span><span class="phrase">+</span><span class="phrase">株主資本比率</span><span class="phrase">×</span><span class="phrase">株主資本コスト</span></span>
         </article>
         <article class="card">
           <h3>やってはいけない投資</h3>
@@ -1252,12 +1487,355 @@
     </section>
 
     <section id="class10">
-      <h2>第10回 仮置き</h2>
+      <h2>第10回 企業価値の続きと財務諸表分析</h2>
+      <p>第10回は、前半で企業価値の続きを確認し、後半で財務諸表分析に入りました。記述式では、公式を暗記するだけでなく「その指標で何を見たいのか」を書けることが重要です。</p>
+
+      <h3>図で見る第10回</h3>
+      <div class="figure-grid">
+        <article class="figure-card">
+          <h3>フリーCFは現金余剰</h3>
+          <div class="formula-chain" aria-label="フリーキャッシュフローの構造">
+            <div class="formula-part phrase-cell"><span class="phrase">売上</span></div>
+            <div class="formula-op">-</div>
+            <div class="formula-part debt phrase-cell"><span class="phrase">費用</span><span class="phrase">税金</span><span class="phrase">投資</span></div>
+            <div class="formula-op">=</div>
+            <div class="formula-part equity phrase-cell"><span class="phrase">現金</span><span class="phrase">余剰</span></div>
+          </div>
+          <p>売上から費用・税金・投資を引いて、企業に残る現金余剰を見る。これが企業価値計算のもとになる。</p>
+        </article>
+        <article class="figure-card">
+          <h3>財務分析の4分類</h3>
+          <div class="quad-grid" aria-label="財務分析の種類">
+            <div class="quad-cell phrase-cell"><span class="phrase quad-label">収益性</span><span class="phrase">利益</span><span class="phrase">を</span><span class="phrase">効率よく</span><span class="phrase">生むか</span></div>
+            <div class="quad-cell phrase-cell"><span class="phrase quad-label">安全性</span><span class="phrase">倒産</span><span class="phrase">リスク</span><span class="phrase">は</span><span class="phrase">低いか</span></div>
+            <div class="quad-cell phrase-cell"><span class="phrase quad-label">成長性</span><span class="phrase">将来</span><span class="phrase">伸びるか</span></div>
+            <div class="quad-cell phrase-cell"><span class="phrase quad-label">生産性</span><span class="phrase">付加価値</span><span class="phrase">を</span><span class="phrase">生むか</span></div>
+          </div>
+          <p>財務分析は、収益性・安全性・成長性・生産性の4分類で整理すると覚えやすい。</p>
+        </article>
+        <article class="figure-card">
+          <h3>ROIは分解できる</h3>
+          <span class="formula phrase-cell"><span class="phrase">利益</span><span class="phrase">÷</span><span class="phrase">資本</span><span class="phrase">=</span><span class="phrase">利益</span><span class="phrase">÷</span><span class="phrase">売上</span><span class="phrase">×</span><span class="phrase">売上</span><span class="phrase">÷</span><span class="phrase">総資産</span></span>
+          <p>利益率が高いのか、資産をよく回しているのかを分けて見られる。ビジネスモデルの違いも読み取りやすい。</p>
+        </article>
+        <article class="figure-card">
+          <h3>CCCは現金回収までの日数</h3>
+          <div class="timeline" aria-label="キャッシュコンバージョンサイクル">
+            <div class="timeline-step phrase-cell"><span class="phrase">棚卸資産</span><span class="phrase">購入</span></div>
+            <div class="formula-op">→</div>
+            <div class="timeline-step phrase-cell"><span class="phrase">販売</span><span class="phrase">売掛金</span></div>
+            <div class="formula-op">→</div>
+            <div class="timeline-step phrase-cell"><span class="phrase">現金</span><span class="phrase">回収</span></div>
+          </div>
+          <span class="formula phrase-cell"><span class="phrase">CCC =</span><span class="phrase">棚卸資産回転期間</span><span class="phrase">+</span><span class="phrase">売掛金回転期間</span><span class="phrase">-</span><span class="phrase">買掛金回転期間</span></span>
+          <p>現金が在庫や売掛金に寝ている期間を見る。短いほど資金繰りは安定しやすく、マイナスが理想。</p>
+        </article>
+      </div>
+
       <div class="grid">
         <article class="card">
-          <h3>第10回 財務情報分析</h3>
-          <p>安全性分析、生産性分析、成長性分析について学ぶ予定。計算方法と意味をセットで覚えるページに差し替える予定。</p>
+          <h3>収益性分析</h3>
+          <p>効率的に利益を稼げているかを見る分析。B/Sの資本・資産とP/Lの利益をつなげるので、規模や業種の違う企業を比較しやすい。</p>
+          <span class="formula phrase-cell"><span class="phrase">ROI =</span><span class="phrase">利益</span><span class="phrase">÷</span><span class="phrase">資本</span><span class="phrase">× 100</span></span>
+          <span class="formula phrase-cell"><span class="phrase">ROA =</span><span class="phrase">経常利益</span><span class="phrase">÷</span><span class="phrase">総資産</span><span class="phrase">× 100</span></span>
+          <span class="formula phrase-cell"><span class="phrase">ROE =</span><span class="phrase">当期純利益</span><span class="phrase">÷</span><span class="phrase">自己資本</span><span class="phrase">× 100</span></span>
         </article>
+        <article class="card">
+          <h3>安全性分析</h3>
+          <p>倒産の危険性や支払能力を見る分析。短期の支払能力、長期資金で固定資産をまかなえているか、返済不要の自己資本がどれだけあるかを見る。</p>
+          <div class="bs-map" aria-label="貸借対照表と安全性">
+            <div class="short phrase-cell"><span class="phrase">流動資産</span><span class="phrase">短期の</span><span class="phrase">支払い原資</span></div>
+            <div class="short phrase-cell"><span class="phrase">流動負債</span><span class="phrase">短期の</span><span class="phrase">支払義務</span></div>
+            <div class="long phrase-cell"><span class="phrase">固定資産</span><span class="phrase">長く使う</span><span class="phrase">資産</span></div>
+            <div class="long phrase-cell"><span class="phrase">自己資本</span><span class="phrase">+</span><span class="phrase">固定負債</span><span class="phrase">長期資金</span></div>
+          </div>
+        </article>
+      </div>
+
+      <h3>主要指標の覚えどころ</h3>
+      <table class="metric-table" aria-label="財務諸表分析の主要指標">
+        <thead>
+          <tr>
+            <th scope="col">分野</th>
+            <th scope="col">指標</th>
+            <th scope="col">式</th>
+            <th scope="col">見ること</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="分野">収益性</td>
+            <td data-label="指標" class="metric-name">ROA</td>
+            <td data-label="式"><span class="phrase-cell"><span class="phrase">経常利益</span><span class="phrase">÷</span><span class="phrase">総資産</span><span class="phrase">× 100</span></span></td>
+            <td data-label="見ること">総資産を使ってどれだけ経常利益を生んだか。</td>
+          </tr>
+          <tr>
+            <td data-label="分野">収益性</td>
+            <td data-label="指標" class="metric-name">ROE</td>
+            <td data-label="式"><span class="phrase-cell"><span class="phrase">当期純利益</span><span class="phrase">÷</span><span class="phrase">自己資本</span><span class="phrase">× 100</span></span></td>
+            <td data-label="見ること">株主の資本でどれだけ最終利益を生んだか。</td>
+          </tr>
+          <tr>
+            <td data-label="分野">安全性</td>
+            <td data-label="指標" class="metric-name">総資産回転率</td>
+            <td data-label="式"><span class="phrase-cell"><span class="phrase">売上高</span><span class="phrase">÷</span><span class="phrase">総資産</span></span></td>
+            <td data-label="見ること">総資産をどれだけ有効に使って売上を生んだか。</td>
+          </tr>
+          <tr>
+            <td data-label="分野">安全性</td>
+            <td data-label="指標" class="metric-name">流動比率</td>
+            <td data-label="式"><span class="phrase-cell"><span class="phrase">流動資産</span><span class="phrase">÷</span><span class="phrase">流動負債</span><span class="phrase">× 100</span></span></td>
+            <td data-label="見ること">短期的な支払能力。100%未満だと短期資金で固定資産を調達している可能性がある。</td>
+          </tr>
+          <tr>
+            <td data-label="分野">安全性</td>
+            <td data-label="指標" class="metric-name">当座比率</td>
+            <td data-label="式"><span class="phrase-cell"><span class="phrase">当座資産</span><span class="phrase">÷</span><span class="phrase">流動負債</span><span class="phrase">× 100</span></span></td>
+            <td data-label="見ること">棚卸資産を除いた、より厳しい短期支払能力。</td>
+          </tr>
+          <tr>
+            <td data-label="分野">安全性</td>
+            <td data-label="指標" class="metric-name">固定比率</td>
+            <td data-label="式"><span class="phrase-cell"><span class="phrase">固定資産</span><span class="phrase">÷</span><span class="phrase">自己資本</span><span class="phrase">× 100</span></span></td>
+            <td data-label="見ること">固定資産を返済不要の自己資本でどれだけ賄えているか。</td>
+          </tr>
+          <tr>
+            <td data-label="分野">安全性</td>
+            <td data-label="指標" class="metric-name">固定長期適合比率</td>
+            <td data-label="式"><span class="phrase-cell"><span class="phrase">固定資産</span><span class="phrase">÷</span><span class="phrase">(自己資本</span><span class="phrase">+</span><span class="phrase">固定負債)</span><span class="phrase">× 100</span></span></td>
+            <td data-label="見ること">固定資産を長期資金で賄えているか。100%以下が基本。</td>
+          </tr>
+          <tr>
+            <td data-label="分野">安全性</td>
+            <td data-label="指標" class="metric-name">自己資本比率</td>
+            <td data-label="式"><span class="phrase-cell"><span class="phrase">自己資本</span><span class="phrase">÷</span><span class="phrase">総資本</span><span class="phrase">× 100</span></span></td>
+            <td data-label="見ること">返済義務のない自己資本がどれだけあるか。財政基盤の健全性を見る。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="visual-questions">
+      <h2>具体値から判定する問題 4種</h2>
+      <p>第1回テストのように、図表や数値を見て説明する型に合わせた練習です。実際の図を再現するのではなく、第2回範囲で出せそうな架空ケースを用意しています。</p>
+      <div class="notice">
+        <p><strong>書き方:</strong> まず分類・状態を判定し、次に根拠にした数値を書き、最後にどうすべきか・なぜ必要かを補う。</p>
+      </div>
+      <div class="exam-list">
+        <article class="exam-card">
+          <h3>1. 連結修正の具体値から、何を消すか・なぜ消すか述べる</h3>
+          <div class="exam-figure">
+            <p><span class="case-label">ケース</span> 親会社P社が子会社S社へ商品100を販売。P社の仕入原価は70。期末時点で、その商品の40%がS社の在庫として残っている。</p>
+            <table class="case-table" aria-label="連結修正ケース">
+              <thead>
+                <tr>
+                  <th scope="col">項目</th>
+                  <th scope="col">P社</th>
+                  <th scope="col">S社</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>商品売買</td>
+                  <td>売上100 / 原価70</td>
+                  <td>仕入100</td>
+                </tr>
+                <tr>
+                  <td>債権債務</td>
+                  <td>売掛金100</td>
+                  <td>買掛金100</td>
+                </tr>
+                <tr>
+                  <td>期末在庫</td>
+                  <td>-</td>
+                  <td>仕入商品の40%が残っている</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <details class="hint">
+            <summary>ヒントを開く</summary>
+            <div class="hint-body">
+              <p>グループ内の売上・仕入、売掛金・買掛金は外部取引ではありません。在庫に残った分だけ、まだ外部に売れていない利益が含まれます。</p>
+            </div>
+          </details>
+          <details>
+            <summary>解答例を開く</summary>
+            <div class="answer">
+              <p><strong>答案の方向:</strong> これは連結修正で内部取引を消すケースである。グループ内の売上100と仕入100は外部との取引ではないため消去する。また、P社の売掛金100とS社の買掛金100も内部債権債務なので相殺する。さらに、S社の期末在庫に含まれる内部利益12は外部に販売されるまで実現していないため、未実現利益として消去する。</p>
+            </div>
+          </details>
+        </article>
+        <article class="exam-card">
+          <h3>2. PPMの具体値から、分類と対応策を述べる</h3>
+          <div class="exam-figure">
+            <p><span class="case-label">ケース</span> X事業の市場成長率は12%、相対的市場シェアは0.4、年間キャッシュフローは-30である。市場成長率10%以上を「高」、相対的市場シェア1.0以上を「高」とする。</p>
+            <table class="case-table" aria-label="X事業の数値">
+              <thead>
+                <tr>
+                  <th scope="col">項目</th>
+                  <th scope="col">X事業</th>
+                  <th scope="col">高低の基準</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>市場成長率</td>
+                  <td>12%</td>
+                  <td>10%以上で高</td>
+                </tr>
+                <tr>
+                  <td>相対的市場シェア</td>
+                  <td>0.4</td>
+                  <td>1.0以上で高</td>
+                </tr>
+                <tr>
+                  <td>年間CF</td>
+                  <td>-30</td>
+                  <td>プラス / マイナスを見る</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <details class="hint">
+            <summary>ヒントを開く</summary>
+            <div class="hint-body">
+              <p>PPMは「市場成長率」と「相対的市場シェア」の高低で4分類します。CFがマイナスなら、現時点では資金を必要としている事業です。</p>
+            </div>
+          </details>
+          <details>
+            <summary>解答例を開く</summary>
+            <div class="answer">
+              <p><strong>答案の方向:</strong> X事業は市場成長率が高い一方、相対的市場シェアが1.0未満で低いため、PPMでは問題児に分類される。成長市場にいるので将来性はあるが、現時点ではシェアが低く、キャッシュフローもマイナスで資金を必要とする。したがって、無条件に投資するのではなく、シェア拡大の見込みを見極め、将来花形に育てられる事業に絞って投資するべきである。</p>
+            </div>
+          </details>
+        </article>
+        <article class="exam-card">
+          <h3>3. 企業価値の具体値から、どちらの投資案がよいか述べる</h3>
+          <div class="exam-figure">
+            <p><span class="case-label">ケース</span> 初期投資100を行う2つの案がある。どちらも3年間続く事業だが、CFの大きさ・時期・リスクが異なる。</p>
+            <table class="case-table" aria-label="企業価値ケース">
+              <thead>
+                <tr>
+                  <th scope="col">案</th>
+                  <th scope="col">1年目CF</th>
+                  <th scope="col">2年目CF</th>
+                  <th scope="col">3年目CF</th>
+                  <th scope="col">資本コスト</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>A案</td>
+                  <td>60</td>
+                  <td>50</td>
+                  <td>40</td>
+                  <td>5%</td>
+                </tr>
+                <tr>
+                  <td>B案</td>
+                  <td>20</td>
+                  <td>50</td>
+                  <td>80</td>
+                  <td>12%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <details class="hint">
+            <summary>ヒントを開く</summary>
+            <div class="hint-body">
+              <p>単純合計だけでなく、CFが入る時期と資本コストを見ます。将来のCFほど、また資本コストが高いほど、現在価値は小さくなります。</p>
+            </div>
+          </details>
+          <details>
+            <summary>解答例を開く</summary>
+            <div class="answer">
+              <p><strong>答案の方向:</strong> A案を選ぶべきと考えられる。単純合計CFはA案もB案も150で同じだが、A案は1年目に60のCFが入り、B案より早く回収できる。また、A案の資本コストは5%で、B案の12%より低い。将来CFは資本コストで割り引くため、早く・低リスクで入るCFほど現在価値が高く、企業価値に貢献しやすい。</p>
+            </div>
+          </details>
+        </article>
+        <article class="exam-card">
+          <h3>4. 財務指標の具体値から、状態と対応策を述べる</h3>
+          <div class="exam-figure">
+            <p><span class="case-label">ケース</span> X社の前期・当期の財務指標が次のように変化した。</p>
+            <table class="case-table" aria-label="財務指標ケース">
+              <thead>
+                <tr>
+                  <th scope="col">指標</th>
+                  <th scope="col">前期</th>
+                  <th scope="col">当期</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>ROA</td>
+                  <td>4%</td>
+                  <td>7%</td>
+                </tr>
+                <tr>
+                  <td>流動比率</td>
+                  <td>160%</td>
+                  <td>95%</td>
+                </tr>
+                <tr>
+                  <td>当座比率</td>
+                  <td>115%</td>
+                  <td>55%</td>
+                </tr>
+                <tr>
+                  <td>CCC</td>
+                  <td>20日</td>
+                  <td>48日</td>
+                </tr>
+              </tbody>
+            </table>
+            <span class="formula phrase-cell"><span class="phrase">CCC =</span><span class="phrase">棚卸資産回転期間</span><span class="phrase">+</span><span class="phrase">売掛金回転期間</span><span class="phrase">-</span><span class="phrase">買掛金回転期間</span></span>
+          </div>
+          <details class="hint">
+            <summary>ヒントを開く</summary>
+            <div class="hint-body">
+              <p>ROAは収益性、流動比率と当座比率は短期の安全性、CCCは資金が回収されるまでの長さを見ます。</p>
+            </div>
+          </details>
+          <details>
+            <summary>解答例を開く</summary>
+            <div class="answer">
+              <p><strong>答案の方向:</strong> 収益性は改善しているが、安全性と資金繰りには問題がある。ROAが4%から7%へ上昇しているため、総資産を使って利益を生む効率は改善している。一方で、流動比率が100%を下回り、当座比率も大きく低下しているため、短期の支払能力には注意が必要である。さらにCCCが20日から48日に長くなっているので、在庫削減や売掛金回収の早期化によって、資金が寝ている期間を短くするべきである。</p>
+            </div>
+          </details>
+        </article>
+      </div>
+    </section>
+
+    <section id="why-questions">
+      <h2>なぜを問う問題 4種</h2>
+      <p>減価償却や資本維持のように、「なぜその仕組みが必要か」を説明する練習です。定義よりも、必要性・理由・具体例を入れると答案になりやすいです。</p>
+      <div class="exam-list">
+        <details>
+          <summary>1. なぜ連結財務諸表では内部取引を消去するのか</summary>
+          <div class="answer">
+            <p>親会社と子会社の間の売買や債権債務は、グループ外部との取引ではない。これを残したまま合算すると、グループ全体としては存在しない売上や利益、債権債務が残り、実態より大きく見えてしまう。そのため、内部取引を消去して、外部から見た企業グループの実態に直す必要がある。</p>
+          </div>
+        </details>
+        <details>
+          <summary>2. なぜ内部統制や内部牽制が必要なのか</summary>
+          <div class="answer">
+            <p>会社では多くの人が分担して業務を行うため、一人に実行・承認・記録・確認が集中すると、不正や誤りが起きても発見されにくい。内部統制や内部牽制を整備すると、業務の有効性・効率性、財務報告の信頼性、法令遵守、資産保全を高められる。</p>
+          </div>
+        </details>
+        <details>
+          <summary>3. なぜ将来キャッシュフローを現在価値に割り引くのか</summary>
+          <div class="answer">
+            <p>今受け取る100万円と1年後に受け取る100万円は同じ価値ではない。今のお金は運用でき、将来のお金には回収できないリスクもある。そのため、将来キャッシュフローは資本コストで割り引き、現在時点の価値に直して企業価値を評価する。</p>
+          </div>
+        </details>
+        <details>
+          <summary>4. なぜ固定資産は長期資金で賄うべきなのか</summary>
+          <div class="answer">
+            <p>固定資産は長期間にわたって使用し、すぐ現金化できるとは限らない。これを流動負債のような短期資金で調達すると、返済時期が先に来て資金繰りが苦しくなる。自己資本や固定負債などの長期資金で賄えているかを見るために、固定比率や固定長期適合比率を使う。</p>
+          </div>
+        </details>
       </div>
     </section>
 
@@ -1341,12 +1919,36 @@
           <p>企業価値を高めるには、将来キャッシュフローを増やすこと、資本コストを下げること、企業価値に貢献しない投資を抑えることが重要である。具体的には、売上を多く・早く・長く増やし、無駄な費用を削減し、投資利回りが資本コストを下回る投資を避ける。</p>
         </div>
       </details>
+      <details>
+        <summary>ROAとROEの違いを説明する</summary>
+        <div class="answer">
+          <p>ROAは総資産を使ってどれだけ経常利益を生み出したかを見る指標であり、分母は総資産である。ROEは自己資本を使ってどれだけ当期純利益を生み出したかを見る指標であり、株主に帰属する利益を重視する。ROAは企業全体の資産効率、ROEは株主資本の効率を見る点が異なる。</p>
+        </div>
+      </details>
+      <details>
+        <summary>流動比率と当座比率の違いを説明する</summary>
+        <div class="answer">
+          <p>流動比率は流動資産を流動負債で割り、短期的な支払能力を見る指標である。当座比率は、流動資産のうち現金預金・受取手形・売掛金など現金化しやすい当座資産だけを使うため、より厳しく短期支払能力を確認できる。両者に大きな差がある場合、棚卸資産を多く抱えている可能性がある。</p>
+        </div>
+      </details>
+      <details>
+        <summary>固定比率と固定長期適合比率は何を見る指標か</summary>
+        <div class="answer">
+          <p>固定比率は、固定資産を自己資本でどれだけ賄えているかを見る指標である。固定長期適合比率は、固定資産を自己資本と固定負債を合わせた長期資金で賄えているかを見る指標である。固定資産は長期に使う資産なので、短期資金ではなく長期資金で調達されている方が安全である。</p>
+        </div>
+      </details>
+      <details>
+        <summary>CCCとは何か、短い方が望ましい理由を説明する</summary>
+        <div class="answer">
+          <p>CCCはキャッシュ・コンバージョン・サイクルのことで、棚卸資産回転期間と売掛金回転期間を足し、買掛金回転期間を引いて求める。仕入れから販売、現金回収までに資金が拘束される期間を見る指標であり、短いほど現金回収が早く、資金繰りが安定しやすい。</p>
+        </div>
+      </details>
     </section>
     </main>
   </div>
 
   <footer>
-    <p>第7回から第9回は講義資料に基づくまとめ。第10回は講義資料入手後に差し替え予定です。</p>
+    <p>第2回テスト範囲の復習ページです。図の読み取りと理由説明を重点的に確認できます。</p>
   </footer>
 </body>
 </html>
