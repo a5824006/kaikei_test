@@ -204,16 +204,21 @@
     }
     .ppm-detail-table {
       width: 100%;
-      min-width: 760px;
+      table-layout: fixed;
       border-collapse: separate;
-      border-spacing: 7px;
+      border-spacing: 6px;
       margin: 12px 0;
-      padding: 10px;
+      padding: 8px;
       background-image:
         linear-gradient(#e8eeee 1px, transparent 1px),
         linear-gradient(90deg, #e8eeee 1px, transparent 1px);
       background-size: 22px 22px;
     }
+    .ppm-detail-table th:nth-child(1) { width: 20%; }
+    .ppm-detail-table th:nth-child(2),
+    .ppm-detail-table th:nth-child(3) { width: 10%; }
+    .ppm-detail-table th:nth-child(4) { width: 25%; }
+    .ppm-detail-table th:nth-child(5) { width: 35%; }
     .ppm-detail-table th,
     .ppm-detail-table td {
       min-height: 64px;
@@ -222,8 +227,10 @@
       padding: 8px;
       text-align: center;
       font-weight: 900;
-      line-height: 1.45;
+      line-height: 1.4;
       vertical-align: middle;
+      word-break: keep-all;
+      overflow-wrap: anywhere;
     }
     .ppm-detail-table th {
       min-height: 40px;
@@ -251,6 +258,9 @@
     }
     .ppm-detail-table .ppm-kind small span {
       white-space: nowrap;
+    }
+    .ppm-mobile-list {
+      display: none;
     }
     .flow {
       display: grid;
@@ -539,11 +549,24 @@
     .metric-table tr:last-child td {
       border-bottom: 0;
     }
+    .metric-table th:nth-child(1),
+    .metric-table td:nth-child(1) {
+      width: 5.5em;
+      white-space: nowrap;
+      word-break: keep-all;
+    }
+    .metric-table th:nth-child(2),
+    .metric-table td:nth-child(2) {
+      width: 8.5em;
+    }
     .metric-name {
       font-weight: 900;
+      word-break: keep-all;
+      overflow-wrap: normal;
     }
     .metric-table .phrase-cell {
       justify-content: flex-start;
+      gap: 0 .2em;
     }
     .timeline {
       display: grid;
@@ -587,6 +610,13 @@
       background: var(--soft-2);
     }
     .bs-map .term-note {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0 .35em;
+      line-height: 1.55;
+    }
+    .bs-map .term-note span {
       white-space: nowrap;
     }
     .formula.nowrap {
@@ -796,11 +826,7 @@
       .grid { grid-template-columns: 1fr; }
       .diagram { grid-template-columns: 1fr auto 1fr; }
       .wide-diagram { overflow-x: visible; }
-      .wide-diagram:has(.ppm-detail-table) {
-        overflow-x: auto;
-        margin-inline: -4px;
-        padding: 0 4px 6px;
-      }
+      .wide-diagram:has(.ppm-detail-table) { display: none; }
       .axis-matrix {
         grid-template-columns: minmax(62px, .68fr) repeat(2, minmax(0, 1fr));
         min-width: 0;
@@ -812,59 +838,59 @@
         font-size: .84rem;
         line-height: 1.45;
       }
-      .ppm-detail-table {
-        min-width: 0;
-        border-spacing: 0;
-        padding: 8px;
+      .ppm-mobile-list {
+        display: grid;
+        gap: 10px;
+        margin: 12px 0;
       }
-      .ppm-detail-table thead {
-        display: none;
-      }
-      .ppm-detail-table,
-      .ppm-detail-table tbody,
-      .ppm-detail-table tr,
-      .ppm-detail-table th,
-      .ppm-detail-table td {
-        display: block;
-        width: 100%;
-      }
-      .ppm-detail-table tr {
-        margin: 0 0 10px;
+      .ppm-mobile-item {
         border: 1px solid var(--line);
         border-radius: 8px;
         background: #fff;
         overflow: hidden;
       }
-      .ppm-detail-table th,
-      .ppm-detail-table td {
-        min-height: 0;
-        border: 0;
-        border-radius: 0;
-        padding: 8px 10px;
-        font-size: .86rem;
-        text-align: left;
+      .ppm-mobile-item h4 {
+        margin: 0;
+        background: #969696;
+        color: #fff;
+        padding: 10px 12px;
+        font-size: 1.02rem;
+        line-height: 1.35;
       }
-      .ppm-detail-table td {
+      .ppm-mobile-item h4 small {
+        display: block;
+        margin-top: 2px;
+        font-size: .78rem;
+        font-weight: 700;
+      }
+      .ppm-mobile-item dl {
         display: grid;
         grid-template-columns: 8.5em minmax(0, 1fr);
-        gap: 8px;
-        align-items: start;
-        border-top: 1px solid var(--line);
+        margin: 0;
       }
-      .ppm-detail-table td::before {
-        content: attr(data-label);
+      .ppm-mobile-item dt,
+      .ppm-mobile-item dd {
+        border-top: 1px solid var(--line);
+        padding: 8px 10px;
+      }
+      .ppm-mobile-item dt {
         color: var(--accent);
         font-weight: 900;
       }
-      .ppm-detail-table .ppm-kind {
-        border: 0;
-        background: #969696;
-        text-align: center;
+      .ppm-mobile-item dt .term-note {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0 .2em;
       }
-      .ppm-detail-table .ppm-kind strong {
-        font-size: 1.08rem;
+      .ppm-mobile-item dt .term-note span {
+        white-space: nowrap;
       }
-      .ppm-detail-table .phrase-cell {
+      .ppm-mobile-item dd {
+        margin: 0;
+        font-weight: 800;
+        word-break: keep-all;
+      }
+      .ppm-mobile-item dd .phrase-cell {
         justify-content: flex-start;
       }
       .flow {
@@ -984,8 +1010,7 @@
       </div>
       <a href="#class7">第7回 連結・税務</a>
       <a href="#class8-internal">第8回 内部統制</a>
-      <a href="#class8-strategy">第8回 経営戦略</a>
-      <a href="#class9-strategy">第9回 戦略の続き</a>
+      <a href="#class8-strategy">第8・9回 経営戦略</a>
       <a href="#class9-value">第9回 企業価値</a>
       <a href="#class10">第10回 財務諸表分析</a>
       <a href="#visual-questions">具体値から判定</a>
@@ -1360,6 +1385,44 @@
           </tbody>
         </table>
       </div>
+      <div class="ppm-mobile-list" aria-label="PPMの4分類と資源配分">
+        <article class="ppm-mobile-item">
+          <h4>花形<small>成長率: 高 / シェア: 高</small></h4>
+          <dl>
+            <dt>支出</dt><dd>多い</dd>
+            <dt>収入</dt><dd>多い</dd>
+            <dt><span class="term-note"><span>キャッシュ・</span><span>フロー</span></span></dt><dd>収支トントン</dd>
+            <dt>戦略的課題</dt><dd>シェア拡大・維持</dd>
+          </dl>
+        </article>
+        <article class="ppm-mobile-item">
+          <h4>金のなる木<small>成長率: 低 / シェア: 高</small></h4>
+          <dl>
+            <dt>支出</dt><dd>少ない</dd>
+            <dt>収入</dt><dd>多い</dd>
+            <dt><span class="term-note"><span>キャッシュ・</span><span>フロー</span></span></dt><dd>プラス</dd>
+            <dt>戦略的課題</dt><dd>収穫</dd>
+          </dl>
+        </article>
+        <article class="ppm-mobile-item">
+          <h4>問題児<small>成長率: 高 / シェア: 低</small></h4>
+          <dl>
+            <dt>支出</dt><dd>多い</dd>
+            <dt>収入</dt><dd>少ない</dd>
+            <dt><span class="term-note"><span>キャッシュ・</span><span>フロー</span></span></dt><dd>マイナス</dd>
+            <dt>戦略的課題</dt><dd>将来性の見極め・選択と集中</dd>
+          </dl>
+        </article>
+        <article class="ppm-mobile-item">
+          <h4>負け犬<small>成長率: 低 / シェア: 低</small></h4>
+          <dl>
+            <dt>支出</dt><dd>少ない</dd>
+            <dt>収入</dt><dd>少ない</dd>
+            <dt><span class="term-note"><span>キャッシュ・</span><span>フロー</span></span></dt><dd>収支トントン or マイナス</dd>
+            <dt>戦略的課題</dt><dd>撤退の検討</dd>
+          </dl>
+        </article>
+      </div>
       <p>PPMは、各事業がどれだけキャッシュを生むか、どれだけキャッシュを必要とするかを見る図。基本は、金のなる木から得た資金を問題児に投じ、将来の花形へ育てる。</p>
     </section>
 
@@ -1549,10 +1612,10 @@
           <h3>安全性分析</h3>
           <p>倒産の危険性や支払能力を見る分析。短期の支払能力、長期資金で固定資産をまかなえているか、返済不要の自己資本がどれだけあるかを見る。</p>
           <div class="bs-map" aria-label="貸借対照表と安全性">
-            <div class="short"><span class="term-note">流動資産 短期の支払い原資</span></div>
-            <div class="short"><span class="term-note">流動負債 短期の支払義務</span></div>
-            <div class="long"><span class="term-note">固定資産 長く使う資産</span></div>
-            <div class="long"><span class="term-note">自己資本 + 固定負債 長期資金</span></div>
+            <div class="short"><span class="term-note"><span>流動資産</span><span>短期の支払い原資</span></span></div>
+            <div class="short"><span class="term-note"><span>流動負債</span><span>短期の支払義務</span></span></div>
+            <div class="long"><span class="term-note"><span>固定資産</span><span>長く使う資産</span></span></div>
+            <div class="long"><span class="term-note"><span>自己資本</span><span>+</span><span>固定負債</span><span>長期資金</span></span></div>
           </div>
         </article>
       </div>
