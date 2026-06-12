@@ -586,8 +586,13 @@
     .bs-map .long {
       background: var(--soft-2);
     }
-    .bs-map .phrase-cell {
-      justify-content: center;
+    .bs-map .term-note {
+      white-space: nowrap;
+    }
+    .formula.nowrap {
+      white-space: nowrap;
+      overflow-x: auto;
+      justify-content: flex-start;
     }
     .exam-list {
       display: grid;
@@ -1521,13 +1526,13 @@
         <article class="figure-card">
           <h3>CCCは現金回収までの日数</h3>
           <div class="timeline" aria-label="キャッシュコンバージョンサイクル">
-            <div class="timeline-step phrase-cell"><span class="phrase">棚卸資産</span><span class="phrase">購入</span></div>
+            <div class="timeline-step">棚卸資産購入</div>
             <div class="formula-op">→</div>
-            <div class="timeline-step phrase-cell"><span class="phrase">販売</span><span class="phrase">売掛金</span></div>
+            <div class="timeline-step">販売・売掛金</div>
             <div class="formula-op">→</div>
-            <div class="timeline-step phrase-cell"><span class="phrase">現金</span><span class="phrase">回収</span></div>
+            <div class="timeline-step">現金回収</div>
           </div>
-          <span class="formula phrase-cell"><span class="phrase">CCC =</span><span class="phrase">棚卸資産回転期間</span><span class="phrase">+</span><span class="phrase">売掛金回転期間</span><span class="phrase">-</span><span class="phrase">買掛金回転期間</span></span>
+          <span class="formula phrase-cell nowrap"><span class="phrase">CCC =</span><span class="phrase">棚卸資産回転期間</span><span class="phrase">+</span><span class="phrase">売掛金回転期間</span><span class="phrase">-</span><span class="phrase">買掛金回転期間</span></span>
           <p>現金が在庫や売掛金に寝ている期間を見る。短いほど資金繰りは安定しやすく、マイナスが理想。</p>
         </article>
       </div>
@@ -1544,10 +1549,10 @@
           <h3>安全性分析</h3>
           <p>倒産の危険性や支払能力を見る分析。短期の支払能力、長期資金で固定資産をまかなえているか、返済不要の自己資本がどれだけあるかを見る。</p>
           <div class="bs-map" aria-label="貸借対照表と安全性">
-            <div class="short phrase-cell"><span class="phrase">流動資産</span><span class="phrase">短期の</span><span class="phrase">支払い原資</span></div>
-            <div class="short phrase-cell"><span class="phrase">流動負債</span><span class="phrase">短期の</span><span class="phrase">支払義務</span></div>
-            <div class="long phrase-cell"><span class="phrase">固定資産</span><span class="phrase">長く使う</span><span class="phrase">資産</span></div>
-            <div class="long phrase-cell"><span class="phrase">自己資本</span><span class="phrase">+</span><span class="phrase">固定負債</span><span class="phrase">長期資金</span></div>
+            <div class="short"><span class="term-note">流動資産 短期の支払い原資</span></div>
+            <div class="short"><span class="term-note">流動負債 短期の支払義務</span></div>
+            <div class="long"><span class="term-note">固定資産 長く使う資産</span></div>
+            <div class="long"><span class="term-note">自己資本 + 固定負債 長期資金</span></div>
           </div>
         </article>
       </div>
