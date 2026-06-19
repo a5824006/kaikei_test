@@ -651,6 +651,20 @@
     .exam-card details.hint[open] summary {
       background: var(--soft-2);
     }
+    .calc-steps {
+      display: grid;
+      gap: 8px;
+      margin: 12px 0;
+    }
+    .calc-step {
+      border-left: 4px solid var(--accent);
+      background: var(--soft);
+      padding: 10px 12px;
+    }
+    .calc-step strong {
+      display: block;
+      margin-bottom: 4px;
+    }
     .hint-body {
       padding: 12px 14px 14px;
       color: var(--muted);
@@ -1013,6 +1027,7 @@
       <a href="#class8-strategy">第8・9回 経営戦略</a>
       <a href="#class9-value">第9回 企業価値</a>
       <a href="#class10">第10回 財務諸表分析</a>
+      <a href="#actual-test">実際に出た問題</a>
       <a href="#visual-questions">具体値から判定</a>
       <a href="#why-questions">なぜを問う問題</a>
       <a href="#questions">予想される記述</a>
@@ -1679,6 +1694,104 @@
           </tr>
         </tbody>
       </table>
+    </section>
+
+    <section id="actual-test">
+      <h2>実際に出た問題</h2>
+      <p>第2回授業内テストでは、財務諸表の数値計算と読み取りが1問、理由や活用方法を説明する記述問題が3問出題されました。当日の問題記録、問題1の写真、テスト後の解説をもとに、設問と採点上の要点を整理します。</p>
+      <div class="notice">
+        <p><strong>今回の型:</strong> 計算問題は「式、計算結果、数値から言えること」、記述問題は「結論、理由、具体的な行動や役割」の順で書くとまとまりやすい。</p>
+      </div>
+
+      <details open>
+        <summary>問1. 財務諸表からCCCとROAを求め、それらから言えることを述べる</summary>
+        <div class="answer">
+          <p>製造業の貸借対照表と損益計算書を使い、①キャッシュ・コンバージョン・サイクル（CCC）と、②総資産経常利益率（ROA）を求め、③それらから言えることを記述する問題でした。</p>
+          <table class="case-table" aria-label="問題1の計算に使う財務諸表データ">
+            <thead><tr><th scope="col">財務諸表</th><th scope="col">項目</th><th scope="col">金額</th></tr></thead>
+            <tbody>
+              <tr><td>B/S</td><td>売掛金</td><td>880</td></tr>
+              <tr><td>B/S</td><td>棚卸資産</td><td>220</td></tr>
+              <tr><td>B/S</td><td>総資産</td><td>25,390</td></tr>
+              <tr><td>B/S</td><td>買掛金</td><td>2,200</td></tr>
+              <tr><td>B/S</td><td>固定資産</td><td>22,700</td></tr>
+              <tr><td>P/L</td><td>売上高</td><td>12,000</td></tr>
+              <tr><td>P/L</td><td>経常利益</td><td>1,320</td></tr>
+            </tbody>
+          </table>
+          <p class="muted">単位: 千円。問題では、このほか現金預金、建物・構築物、土地、借入金、売上原価、営業利益などを含むB/S・P/L全体が提示されました。</p>
+
+          <h3>① CCCの計算</h3>
+          <div class="calc-steps">
+            <div class="calc-step"><strong>棚卸資産回転期間</strong>220 ÷ 12,000 × 365 ≒ 6.7日</div>
+            <div class="calc-step"><strong>売掛金回転期間</strong>880 ÷ 12,000 × 365 ≒ 26.8日</div>
+            <div class="calc-step"><strong>買掛金回転期間</strong>2,200 ÷ 12,000 × 365 ≒ 66.9日</div>
+          </div>
+          <span class="formula phrase-cell"><span class="phrase">CCC =</span><span class="phrase">6.7日</span><span class="phrase">+</span><span class="phrase">26.8日</span><span class="phrase">-</span><span class="phrase">66.9日</span><span class="phrase">≒ -33日</span></span>
+          <p>CCCがマイナスなので、仕入先へ代金を支払うより前に、在庫販売と売掛金回収が進んでいる。運転資金が長期間拘束されにくく、資金繰りの効率は良いと読めます。ただし、CCCだけで企業全体を優良と断定することはできません。</p>
+
+          <h3>② ROAの計算</h3>
+          <span class="formula phrase-cell"><span class="phrase">ROA =</span><span class="phrase">1,320</span><span class="phrase">÷</span><span class="phrase">25,390</span><span class="phrase">× 100</span><span class="phrase">≒ 5.2%</span></span>
+          <div class="calc-steps">
+            <div class="calc-step"><strong>売上高経常利益率</strong>1,320 ÷ 12,000 × 100 = 11.0%</div>
+            <div class="calc-step"><strong>総資産回転率</strong>12,000 ÷ 25,390 ≒ 0.47回</div>
+          </div>
+          <p>解説では、ROA 5.2%はやや低めと評価されました。分解すると、売上高経常利益率11.0%は高い一方、総資産回転率0.47回は低い。利益率の高さがROAを支えているものの、資産を使って売上を生む効率には改善余地があると読めます。固定資産が総資産の大部分を占める製造業であることも、回転率が低くなる背景として考えられます。</p>
+          <p><strong>改善の方向:</strong> 資金繰りが良いことを活かして成長投資を行う、未使用・遊休資産を売却または有効活用する、既存資産を使って売上を増やす、といった施策が考えられます。数値と結論の整合性が取れていれば、複数の読み取り方が可能です。</p>
+          <div class="notice">
+            <p><strong>答案例:</strong> CCCは約マイナス33日であり、仕入代金の支払いより前に売上代金を回収できているため、資金繰りの効率は良い。ROAは約5.2%でやや低い。売上高経常利益率は11.0%と高い一方、総資産回転率は約0.47回と低いため、高い利益率が収益性を支えているが、資産効率には改善の余地がある。</p>
+          </div>
+        </div>
+      </details>
+
+      <details open>
+        <summary>問2. 企業価値を向上させるため、経営者として何をするか</summary>
+        <div class="answer">
+          <p>企業価値を高める3つのドライバーを踏まえ、具体的な経営行動を説明する問題でした。</p>
+          <ol>
+            <li><strong>税引後利益を増やす:</strong> 売上を多く、早く、長く得られる事業を育て、価値を生まない費用を抑える。</li>
+            <li><strong>資本コストを下げる:</strong> 事業リスクを抑え、信用力を高め、負債と自己資本の構成を適切にする。</li>
+            <li><strong>企業価値に貢献しない投資を抑える:</strong> 将来CFの現在価値や投資利回りを資本コストと比較し、価値を生まない投資を避ける。ただし、将来の成長に必要な投資まで一律に削らない。</li>
+          </ol>
+          <p><strong>解説の具体例:</strong> 定額課金のサービスは、売上を早く安定して受け取り、顧客との関係を長く保ちやすい。「多く・早く・長く」という売上増加の考え方を説明しやすい例です。</p>
+          <p><strong>投資判断の注意:</strong> 現時点の数値だけで投資を排除すると、立ち上げ期でCFがマイナスの将来事業まで失う可能性があります。既存事業と将来事業のライフサイクルや、事業分散によるリスク低下も含めて判断します。</p>
+          <div class="notice">
+            <p><strong>答案例:</strong> 経営者として、売上を多く・早く・長く獲得し、不要な費用を抑えることで税引後利益を増やす。また、信用力の向上や適切な資本構成によって資本コストを下げる。さらに、投資の将来CFと資本コストを比較し、企業価値に貢献しない投資を抑制する。ただし、長期的な成長に必要な投資まで安易に削減しない。</p>
+          </div>
+        </div>
+      </details>
+
+      <details open>
+        <summary>問3. 会計利益と課税所得が一致しない理由と、税務会計の役割</summary>
+        <div class="answer">
+          <p>企業会計と税法では目的や計算ルールが異なるため、会計上の利益と税法上の課税所得が一致しない場合があります。</p>
+          <ul>
+            <li><strong>企業会計:</strong> 企業の経営成績と財政状態を適切に表し、投資家や債権者の判断に役立つ情報を提供する。</li>
+            <li><strong>税法:</strong> 公平な課税と税収の確保などを目的に、益金・損金へ算入できる範囲や時期を定める。</li>
+            <li><strong>差が生じる例:</strong> 交際費や寄附金の損金算入限度、減価償却限度額、引当金、受取配当金など。</li>
+          </ul>
+          <p><strong>解説の具体例:</strong> 交際費を会計上の費用として計上しても、税法上は全額を損金にできない場合があります。支出を増やすだけで課税所得と税額を過度に減らせないよう調整し、企業間の課税を公平にするためです。</p>
+          <p>税務会計は、企業会計で求めた利益に税法上の加算・減算調整を行って課税所得を計算し、法人税額を算定して適正に申告・納付する役割を持ちます。</p>
+          <div class="notice">
+            <p><strong>答案例:</strong> 企業会計は企業の経営成績を適切に示すことを目的とする一方、税法は公平な課税と税収確保を目的として独自の益金・損金算入ルールを設けている。そのため、費用として認識する範囲や時期などに差が生じ、会計利益と課税所得は一致しない場合がある。税務会計は、会計利益に税務調整を加えて課税所得と税額を計算し、適正な申告・納付につなげる役割を持つ。</p>
+          </div>
+        </div>
+      </details>
+
+      <details open>
+        <summary>問4. 価値連鎖分析はコスト管理と競争優位にどう役立つか</summary>
+        <div class="answer">
+          <p>価値連鎖分析は内部環境分析の枠組みです。購買物流、製造、出荷物流、販売・マーケティング、サービスなどの活動を分け、それぞれで発生するコストと生み出す価値を確認します。</p>
+          <ul>
+            <li><strong>コスト管理:</strong> 活動別にコストを把握し、コストが過大な工程、重複作業、価値を生まない活動を見つけて改善や削減につなげる。</li>
+            <li><strong>競争優位:</strong> 顧客価値を大きく生む活動を特定し、品質、技術、ブランド、サービスなどへ重点的に資源を配分して、低コスト化または差別化を実現する。</li>
+          </ul>
+          <p><strong>解説のポイント:</strong> 活動ごとにコストを割り当てると、どこでコストを使いすぎているか、どこで利益やマージンを生み出しているかを可視化できます。競合より低コストで行える活動はコスト優位性になり、価値を生む活動へ集中することは差別化優位性につながります。</p>
+          <div class="notice">
+            <p><strong>答案例:</strong> 価値連鎖分析は、製品やサービスが顧客へ届くまでの活動を分解し、各活動のコストと生み出す価値を把握する分析である。これにより、無駄な活動やコストの高い工程を特定してコストを削減できる。また、顧客価値を生む活動へ資源を集中させることで、低コスト化や差別化を進め、競争優位の構築に役立てられる。</p>
+          </div>
+        </div>
+      </details>
     </section>
 
     <section id="visual-questions">

@@ -102,6 +102,66 @@
       font-size: .85rem;
       font-weight: 900;
     }
+    .figure-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .figure-card { border: 1px solid var(--line); border-radius: 8px; background: #fff; padding: 14px; }
+    .value-flow {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+      gap: 8px;
+      align-items: center;
+      margin: 14px 0;
+    }
+    .flow-box {
+      min-height: 84px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+      padding: 10px;
+      text-align: center;
+      font-weight: 900;
+    }
+    .flow-box.value { background: var(--soft-2); }
+    .flow-arrow { color: var(--accent-2); font-size: 1.45rem; font-weight: 900; }
+    .formula {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0 .25em;
+      border-radius: 8px;
+      background: var(--soft-2);
+      padding: 12px;
+      margin: 10px 0;
+      font-weight: 900;
+      text-align: center;
+    }
+    .formula span { white-space: nowrap; }
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: .94rem;
+    }
+    .compare-table th, .compare-table td { border: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
+    .compare-table th { background: var(--soft); color: var(--accent); }
+    details {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      margin: 10px 0;
+      overflow: hidden;
+    }
+    details > summary {
+      cursor: pointer;
+      padding: 12px 14px;
+      background: #fafafa;
+      font-weight: 900;
+    }
+    details[open] > summary { background: var(--soft); border-bottom: 1px solid var(--line); }
+    .answer { padding: 14px 16px 16px; }
+    .memory-list { display: grid; gap: 8px; margin: 12px 0; }
+    .memory-item { border-left: 4px solid var(--accent); background: var(--soft); padding: 10px 12px; }
     .hamburger-menu {
       position: fixed;
       top: 14px;
@@ -169,6 +229,14 @@
       .side-nav { position: static; margin-bottom: 18px; }
       h1 { font-size: 1.65rem; }
       .grid { grid-template-columns: 1fr; }
+      .figure-grid { grid-template-columns: 1fr; }
+      .value-flow { grid-template-columns: 1fr; }
+      .flow-arrow { text-align: center; transform: rotate(90deg); }
+      .compare-table, .compare-table tbody, .compare-table tr, .compare-table th, .compare-table td { display: block; width: 100%; }
+      .compare-table thead { display: none; }
+      .compare-table tr { border: 1px solid var(--line); border-radius: 8px; margin-bottom: 10px; overflow: hidden; }
+      .compare-table td { border: 0; border-top: 1px solid var(--line); }
+      .compare-table td:first-child { border-top: 0; background: var(--soft); font-weight: 900; }
     }
   </style>
 </head>
@@ -187,66 +255,133 @@
     <div class="hero">
       <p class="eyebrow">第11回から第14回</p>
       <h1>会計学 第3回テスト対策</h1>
-      <p class="lead">授業計画画像から読める内容をもとにした仮ページです。講義資料が揃ったら、用語・図解・予想問題を講義内容に沿って差し替えます。</p>
+      <p class="lead">付加価値、生産性、予算管理、原価計算、コスト・マネジメントを扱う範囲です。第11回は、生産性分析の意味と計算式を中心に整理しています。</p>
     </div>
   </header>
 
   <div class="layout">
     <nav class="side-nav" aria-label="目次">
       <h2>目次</h2>
-      <a href="#status">作成状況</a>
-      <a href="#range">授業計画ベースの範囲</a>
-      <a href="#replace">あとで差し替える内容</a>
+      <a href="#class11">第11回 生産性分析</a>
+      <a href="#methods">付加価値の算定</a>
+      <a href="#productivity">労働生産性</a>
+      <a href="#distribution">労働分配率</a>
+      <a href="#questions">予想される記述</a>
+      <a href="#later">第12回以降</a>
     </nav>
 
     <main>
-    <section id="status">
-      <h2>作成状況</h2>
+    <section id="class11">
+      <h2>第11回 財務諸表分析②</h2>
+      <p>第11回では、企業が原材料などのインプットへ加工・生産・サービスを加え、どれだけ新しい価値を生み出したかを見る生産性分析を扱います。</p>
+      <div class="value-flow" aria-label="付加価値が生まれる流れ">
+        <div class="flow-box">原材料を購入<br>650万円</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">加工・生産・サービス</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box value">販売 900万円<br>付加価値 250万円</div>
+      </div>
       <div class="notice">
-        <p><strong>仮ページです。</strong> 現時点では授業計画ベース。講義資料を読み込んだ後、正式な復習ページに更新します。</p>
+        <p><strong>付加価値:</strong> 企業が外部から購入したものへ、自社の活動によって新たに加えた価値。単なる売上高ではなく「自社が生み出した部分」を見ます。</p>
       </div>
     </section>
 
-    <section id="range">
-      <h2>授業計画ベースの範囲</h2>
+    <section id="methods">
+      <h2>付加価値の2つの算定方法</h2>
+      <div class="figure-grid">
+        <article class="figure-card">
+          <h3>① 控除法</h3>
+          <p>中小企業庁方式。売上高から、外部へ支払った原材料費と支払経費を引きます。</p>
+          <div class="formula"><span>付加価値</span><span>=</span><span>売上高</span><span>-</span><span>（原材料費 + 支払経費）</span></div>
+          <p><span class="tag">外から見る</span> 売上のうち、外部購入分を除いた残り。</p>
+        </article>
+        <article class="figure-card">
+          <h3>② 加算法</h3>
+          <p>日銀方式。企業が生み出した価値の分配先を足し合わせます。</p>
+          <div class="formula"><span>付加価値</span><span>=</span><span>経常利益</span><span>+</span><span>人件費</span><span>+</span><span>金融費用</span><span>+</span><span>賃借料</span><span>+</span><span>租税公課</span><span>+</span><span>減価償却費</span></div>
+          <p><span class="tag">中から見る</span> 利益や人件費など、付加価値の構成要素を合計。</p>
+        </article>
+      </div>
+      <div class="notice">
+        <p><strong>重要:</strong> 人件費は付加価値を生むための単なる外部費用ではなく、付加価値の構成要素です。そのため、人件費を削減しても、控除法で求める付加価値額が直接増えるわけではありません。</p>
+      </div>
+      <table class="compare-table" aria-label="控除法と加算法の比較">
+        <thead><tr><th>方法</th><th>考え方</th><th>覚え方</th></tr></thead>
+        <tbody>
+          <tr><td>控除法</td><td>売上高から外部購入価値を引く</td><td>外から買った分を控除</td></tr>
+          <tr><td>加算法</td><td>付加価値の分配先を足す</td><td>利益・人件費などを加算</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="productivity">
+      <h2>労働生産性</h2>
+      <p>従業員1人あたりが、どれだけ付加価値を稼ぎ出したかを表す指標です。労働時間や働き方の効率を考える手がかりにもなり、高いほど高能率と評価します。</p>
+      <div class="formula"><span>労働生産性（円）</span><span>=</span><span>付加価値額</span><span>÷</span><span>平均従業員数</span></div>
       <div class="grid">
         <article class="card">
-          <h3>第11回 財務情報分析2</h3>
-          <p>授業内テスト2の後、企業価値評価および財務情報分析1の理解確認、その他の財務情報分析の手法を学ぶ予定。</p>
-          <p><span class="tag">仮キーワード</span> 企業価値評価、財務情報分析、分析手法</p>
+          <h3>計算例</h3>
+          <p>付加価値2,500万円、平均従業員数10人の場合。</p>
+          <div class="formula"><span>2,500万円</span><span>÷</span><span>10人</span><span>=</span><span>250万円 / 人</span></div>
         </article>
         <article class="card">
-          <h3>第12回 予算管理</h3>
-          <p>予算管理システム、予算編成方法、予算統制手法、予算ゲーム、会計コントロールの限界を学ぶ予定。</p>
-          <p><span class="tag">仮キーワード</span> 予算編成、予算統制、管理会計</p>
-        </article>
-        <article class="card">
-          <h3>第13回 原価計算</h3>
-          <p>原価計算の基本的な考え方、製品原価の計算、正確な原価情報を得るための計算構造を学ぶ予定。</p>
-          <p><span class="tag">仮キーワード</span> 製品原価、製造業、原価情報</p>
-        </article>
-        <article class="card">
-          <h3>第14回 コスト・マネジメント</h3>
-          <p>原価管理の体系、発生するコストの抑制だけでなく、予測される原価の抑制、原価低減まで学ぶ予定。</p>
-          <p><span class="tag">仮キーワード</span> コスト抑制、原価低減、管理</p>
+          <h3>読み取り</h3>
+          <p>同じ人数で付加価値を増やす、または同じ付加価値をより少ない労働投入で生み出すと上昇します。ただし、単純な人員削減だけでなく、設備、技術、業務改善、教育なども合わせて考えます。</p>
         </article>
       </div>
+      <p>講義資料では、2024年の日本の時間あたり労働生産性は60.1ドル（約5,720円）と紹介され、日本企業の生産性の低さが課題として挙げられました。</p>
     </section>
 
-    <section id="replace">
-      <h2>あとで差し替える内容</h2>
-      <ul>
-        <li>各回の講義資料に基づく用語カード</li>
-        <li>予算管理・原価計算・コスト管理の図解</li>
-        <li>記述式で出そうな問題と解答骨子</li>
-        <li>実際に出た問題のログ</li>
-      </ul>
+    <section id="distribution">
+      <h2>付加価値労働分配率</h2>
+      <p>企業が生み出した付加価値のうち、どれだけを人件費として従業員へ分配したかを表します。企業の人件費支払能力や、利益とのバランスを見る指標です。</p>
+      <div class="formula"><span>付加価値労働分配率（%）</span><span>=</span><span>人件費</span><span>÷</span><span>付加価値額</span><span>× 100</span></div>
+      <div class="grid">
+        <article class="card">
+          <h3>低すぎる場合</h3>
+          <p>付加価値が従業員へ十分に分配されず、賃金への不満や労働意欲の低下につながる可能性があります。</p>
+        </article>
+        <article class="card">
+          <h3>高すぎる場合</h3>
+          <p>人件費負担が大きくなり、利益や内部留保が減って、投資や将来の成長に回す資金が不足する可能性があります。</p>
+        </article>
+      </div>
+      <p><span class="tag">実務</span> 春闘などの労働争議や労働組合との賃金交渉でも利用される指標です。</p>
+    </section>
+
+    <section id="questions">
+      <h2>予想される記述・計算問題</h2>
+      <details>
+        <summary>1. 付加価値とは何か。図の数値から求める</summary>
+        <div class="answer"><p>付加価値とは、企業が外部から購入した原材料などに、加工・生産・サービスを加えて新たに生み出した価値である。650万円で購入した原材料を加工し900万円で販売した場合、付加価値は900万円 - 650万円 = 250万円となる。</p></div>
+      </details>
+      <details>
+        <summary>2. 控除法と加算法の違いを説明する</summary>
+        <div class="answer"><p>控除法は売上高から原材料費や支払経費など外部購入価値を差し引いて付加価値を求める。加算法は経常利益、人件費、金融費用、賃借料、租税公課、減価償却費など、付加価値の構成要素を足して求める。求め方は異なるが、どちらも企業が新たに生み出した価値を測る。</p></div>
+      </details>
+      <details>
+        <summary>3. 労働生産性は何を表し、なぜ高い方がよいか</summary>
+        <div class="answer"><p>労働生産性は付加価値額を平均従業員数で割り、従業員1人あたりが生み出した付加価値を表す。高いほど、同じ労働投入からより多くの付加価値を生み出しており、労働の効率が高いと評価できる。</p></div>
+      </details>
+      <details>
+        <summary>4. 労働分配率は高いほどよいと言い切れない理由</summary>
+        <div class="answer"><p>労働分配率が低すぎると従業員への分配が不足し、労働意欲の低下につながる。一方、高すぎると人件費負担によって利益や内部留保が減り、将来投資や企業の継続性を損なう可能性がある。そのため、従業員への適正な分配と企業に残す資金のバランスが重要である。</p></div>
+      </details>
+    </section>
+
+    <section id="later">
+      <h2>第12回以降の範囲</h2>
+      <div class="grid">
+        <article class="card"><h3>第12回 予算管理</h3><p>予算編成、予算統制、予算ゲーム、会計コントロールの限界。</p></article>
+        <article class="card"><h3>第13回 原価計算</h3><p>原価計算の基本、製品原価、製造業の計算構造。</p></article>
+        <article class="card"><h3>第14回 コスト・マネジメント</h3><p>コスト抑制、原価低減、予測される原価の管理。</p></article>
+      </div>
     </section>
     </main>
   </div>
 
   <footer>
-    <p>授業計画画像から作成した仮ページです。講義資料入手後に差し替え予定です。</p>
+    <p>会計学 第3回授業内テストに向けた復習ページです。</p>
   </footer>
 </body>
 </html>
