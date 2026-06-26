@@ -162,6 +162,65 @@
     .answer { padding: 14px 16px 16px; }
     .memory-list { display: grid; gap: 8px; margin: 12px 0; }
     .memory-item { border-left: 4px solid var(--accent); background: var(--soft); padding: 10px 12px; }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin: 14px 0;
+    }
+    .process-step {
+      min-height: 92px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+      padding: 12px;
+      text-align: center;
+      font-weight: 900;
+    }
+    .process-step strong {
+      display: block;
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
+    .process-step.emphasis { background: var(--soft-2); }
+    .center-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 12px 0;
+    }
+    .center-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 12px;
+    }
+    .center-card h3 { color: var(--accent); }
+    .stack-list {
+      display: grid;
+      gap: 8px;
+      margin: 12px 0;
+    }
+    .stack-item {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr);
+      gap: 10px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+    }
+    .stack-item strong {
+      height: 100%;
+      display: grid;
+      place-items: center;
+      background: var(--soft);
+      color: var(--accent);
+      padding: 10px;
+      text-align: center;
+    }
+    .stack-item span { padding: 10px 12px; }
     .hamburger-menu {
       position: fixed;
       top: 14px;
@@ -237,6 +296,21 @@
       .compare-table tr { border: 1px solid var(--line); border-radius: 8px; margin-bottom: 10px; overflow: hidden; }
       .compare-table td { border: 0; border-top: 1px solid var(--line); }
       .compare-table td:first-child { border-top: 0; background: var(--soft); font-weight: 900; }
+      .compare-table td[data-label]::before {
+        content: attr(data-label);
+        display: block;
+        margin-bottom: 2px;
+        color: var(--accent);
+        font-weight: 900;
+      }
+      .compare-table td:first-child::before { display: none; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .center-grid { grid-template-columns: 1fr; }
+      .stack-item { grid-template-columns: 1fr; }
+      .stack-item strong { place-items: start; }
+    }
+    @media (max-width: 520px) {
+      .process-steps { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -255,7 +329,7 @@
     <div class="hero">
       <p class="eyebrow">第11回から第14回</p>
       <h1>会計学 第3回テスト対策</h1>
-      <p class="lead">付加価値、生産性、予算管理、原価計算、コスト・マネジメントを扱う範囲です。第11回は、生産性分析の意味と計算式を中心に整理しています。</p>
+      <p class="lead">付加価値、生産性、予算管理、責任会計、原価計算、コスト・マネジメントを扱う範囲です。第11回と第12回は、用語の意味と「なぜその仕組みが必要か」を中心に整理しています。</p>
     </div>
   </header>
 
@@ -266,8 +340,12 @@
       <a href="#methods">付加価値の算定</a>
       <a href="#productivity">労働生産性</a>
       <a href="#distribution">労働分配率</a>
+      <a href="#class12">第12回 予算管理</a>
+      <a href="#budget-methods">予算編成と課題</a>
+      <a href="#responsibility">責任会計</a>
+      <a href="#segment">セグメント会計</a>
       <a href="#questions">予想される記述</a>
-      <a href="#later">第12回以降</a>
+      <a href="#later">第13回以降</a>
     </nav>
 
     <main>
@@ -308,8 +386,8 @@
       <table class="compare-table" aria-label="控除法と加算法の比較">
         <thead><tr><th>方法</th><th>考え方</th><th>覚え方</th></tr></thead>
         <tbody>
-          <tr><td>控除法</td><td>売上高から外部購入価値を引く</td><td>外から買った分を控除</td></tr>
-          <tr><td>加算法</td><td>付加価値の分配先を足す</td><td>利益・人件費などを加算</td></tr>
+          <tr><td data-label="方法">控除法</td><td data-label="考え方">売上高から外部購入価値を引く</td><td data-label="覚え方">外から買った分を控除</td></tr>
+          <tr><td data-label="方法">加算法</td><td data-label="考え方">付加価値の分配先を足す</td><td data-label="覚え方">利益・人件費などを加算</td></tr>
         </tbody>
       </table>
     </section>
@@ -349,8 +427,121 @@
       <p><span class="tag">実務</span> 春闘などの労働争議や労働組合との賃金交渉でも利用される指標です。</p>
     </section>
 
+    <section id="class12">
+      <h2>第12回 予算管理</h2>
+      <p>予算管理は、組織の目標と合う行動を動機づける仕組みです。単に金額を決めるだけではなく、計画を立て、実行し、差異を見て、次の行動へ戻すPDCAサイクルとして使います。</p>
+      <div class="process-steps" aria-label="予算管理とPDCA">
+        <div class="process-step"><strong>Plan</strong><span>中長期利益計画<br>予算編成</span></div>
+        <div class="process-step"><strong>Do</strong><span>予算をもとに<br>実行</span></div>
+        <div class="process-step"><strong>Check</strong><span>月次管理<br>差異分析</span></div>
+        <div class="process-step emphasis"><strong>Action</strong><span>改善<br>翌期へ反映</span></div>
+      </div>
+      <div class="notice">
+        <p><strong>予算管理の覚え方:</strong> 予算編成で目標と計画を決め、予算統制で実績との差を調べ、差異の原因を次の行動へ反映させます。</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <h3>予算の計画機能</h3>
+          <p>1年間の活動目標と詳細計画を示し、組織成員に「何を目指すか」を明確にします。</p>
+        </article>
+        <article class="card">
+          <h3>予算の調整機能</h3>
+          <p>販売・製造・財務などの職能別部門や、本社・事業部・部・課などの組織階層を調整します。</p>
+        </article>
+        <article class="card">
+          <h3>予算の統制機能</h3>
+          <p>予算と実績を比較し、未達や差異があれば原因を調査して改善措置につなげます。</p>
+        </article>
+        <article class="card">
+          <h3>動機づけ機能</h3>
+          <p>予算達成度を業績評価、昇進、昇給、ボーナスなどと結びつけ、目標達成へ向かう行動を促します。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="budget-methods">
+      <h2>予算編成と課題</h2>
+      <table class="compare-table" aria-label="トップダウン型予算とボトムアップ型予算">
+        <thead><tr><th>方法</th><th>特徴</th><th>長所</th><th>短所</th></tr></thead>
+        <tbody>
+          <tr>
+            <td data-label="方法">トップダウン型予算</td>
+            <td data-label="特徴">トップが決めた予算を各部門へ伝達する集権的な方式。</td>
+            <td data-label="長所">必達目標として示しやすく、報酬と結びつければ達成意欲を高めやすい。</td>
+            <td data-label="短所">現場の状況が反映されにくく、不満や不信感が高まると協力を得にくい。</td>
+          </tr>
+          <tr>
+            <td data-label="方法">ボトムアップ型予算</td>
+            <td data-label="特徴">各部門管理者の意見をもとに予算を積み上げる分権的な方式。</td>
+            <td data-label="長所">現場の実情に合いやすく、目標への責任感やコミットメントが高まりやすい。</td>
+            <td data-label="短所">目標が甘くなり、予算スラックが生じる可能性がある。</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="figure-grid">
+        <article class="figure-card">
+          <h3>予算の硬直性</h3>
+          <p>一度決めた予算が目標になるため、大きな環境変化や災害が起きると、当初の予算が現実に合わなくなることがあります。</p>
+        </article>
+        <article class="figure-card">
+          <h3>予算スラック</h3>
+          <p>予算を達成しやすくするために、売上目標を低くしたり、費用予算を大きく申請したりして作られる余裕です。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="responsibility">
+      <h2>責任会計</h2>
+      <p>責任会計は、会計システムと組織上の管理者を結びつけ、誰がどの範囲に責任を持つかを明確にする制度です。ポイントは、権限と責任を対応させることです。</p>
+      <div class="formula"><span>責任範囲の設定</span><span>→</span><span>管理可能な業績評価尺度</span><span>→</span><span>責任に応じた評価</span></div>
+      <div class="center-grid">
+        <article class="center-card">
+          <h3>コストセンター</h3>
+          <p>費用を管理し、費用目標の達成に責任を負う部門。工場や本社部門など。作りすぎや過度なコスト削減による品質低下に注意します。</p>
+        </article>
+        <article class="center-card">
+          <h3>レベニューセンター</h3>
+          <p>収益を管理し、収益目標の達成に責任を負う部門。営業部門など。売上だけを追うと値下げ販売に偏る可能性があります。</p>
+        </article>
+        <article class="center-card">
+          <h3>プロフィットセンター</h3>
+          <p>収益と費用を管理し、利益目標の達成に責任を負う部門。事業部や子会社など。使った資産の大きさまでは見にくい点が課題です。</p>
+        </article>
+        <article class="center-card">
+          <h3>インベストメントセンター</h3>
+          <p>収益・費用に加えて投資額も管理し、投資に対する収益性にも責任を負う部門。ROIや残余利益で評価します。</p>
+        </article>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <h3>ROI</h3>
+          <div class="formula"><span>ROI</span><span>=</span><span>利益</span><span>÷</span><span>投資</span><span>× 100</span></div>
+          <p>事業部自体の業績評価、つまり組織そのものの評価に向いています。</p>
+        </article>
+        <article class="card">
+          <h3>残余利益（RI）</h3>
+          <div class="formula"><span>残余利益</span><span>=</span><span>利益</span><span>-</span><span>投下資本</span><span>×</span><span>資本コスト率</span></div>
+          <p>資金調達コストを差し引いた後に残る利益を見るため、事業部長の評価に向いています。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="segment">
+      <h2>セグメント会計</h2>
+      <p>セグメント会計は、事業部などの下位組織ごとに損益を把握し、組織全体の目標から外れないようにする仕組みです。事業部長を評価するときは、その人が管理できる費用かどうかを分けて考えます。</p>
+      <div class="stack-list">
+        <div class="stack-item"><strong>限界利益</strong><span>売上高 - 事業部変動費。売上に比例して増減する利益。</span></div>
+        <div class="stack-item"><strong>管理可能利益</strong><span>限界利益 - 管理可能個別固定費。事業部長の業績評価に適した利益。</span></div>
+        <div class="stack-item"><strong>事業部利益</strong><span>管理可能利益 - 管理不能個別固定費。事業部そのものの業績評価に適した利益。</span></div>
+      </div>
+      <div class="notice">
+        <p><strong>本社費の配賦:</strong> 本社費は事業部にとって管理不能費ですが、企業存続に必要なコストであり、本社共通費の肥大化を避けるために配賦が必要になります。</p>
+      </div>
+    </section>
+
     <section id="questions">
       <h2>予想される記述・計算問題</h2>
+      <h3>第11回 生産性分析</h3>
       <details>
         <summary>1. 付加価値とは何か。図の数値から求める</summary>
         <div class="answer"><p>付加価値とは、企業が外部から購入した原材料などに、加工・生産・サービスを加えて新たに生み出した価値である。650万円で購入した原材料を加工し900万円で販売した場合、付加価値は900万円 - 650万円 = 250万円となる。</p></div>
@@ -367,12 +558,32 @@
         <summary>4. 労働分配率は高いほどよいと言い切れない理由</summary>
         <div class="answer"><p>労働分配率が低すぎると従業員への分配が不足し、労働意欲の低下につながる。一方、高すぎると人件費負担によって利益や内部留保が減り、将来投資や企業の継続性を損なう可能性がある。そのため、従業員への適正な分配と企業に残す資金のバランスが重要である。</p></div>
       </details>
+      <h3>第12回 予算管理・責任会計</h3>
+      <details>
+        <summary>5. 予算管理とは何か。PDCAとの関係を説明する</summary>
+        <div class="answer"><p>予算管理とは、組織目標と合致する行動を動機づけるために、予算を使って計画・実行・評価・改善を行う仕組みである。予算編成で目標と計画を示し、実行後に予算と実績を比較して差異を分析し、その原因を改善や翌期の計画に反映させる。したがって、予算は単なる金額表ではなく、PDCAサイクルを回すための管理手段である。</p></div>
+      </details>
+      <details>
+        <summary>6. トップダウン型予算とボトムアップ型予算を比較する</summary>
+        <div class="answer"><p>トップダウン型予算は、トップが決めた予算を各部門に示す方式で、全社方針を反映しやすく必達目標として使いやすい。一方、現場の状況が反映されにくく、不満が高まる可能性がある。ボトムアップ型予算は、現場の意見をもとに積み上げる方式で、実情に合いやすく責任感も高まりやすいが、達成しやすい甘い目標、つまり予算スラックが生じる可能性がある。</p></div>
+      </details>
+      <details>
+        <summary>7. 予算スラックがなぜ問題になるか</summary>
+        <div class="answer"><p>予算スラックとは、予算を達成しやすくするために意図的に作られる余裕である。例えば、売上目標を小さくしたり、費用予算を大きく申請したりする。これが生じると、予算を達成していても本来可能だった成果より低い水準にとどまり、組織全体の利益目標と部門の行動がずれるため問題になる。</p></div>
+      </details>
+      <details>
+        <summary>8. 責任会計で権限と責任を対応させる理由</summary>
+        <div class="answer"><p>責任会計では、各管理者が管理できる範囲に応じて業績を測定する。管理できない費用や収益まで評価対象にすると、公平な評価にならず、改善行動にも結びつきにくい。そこで、コストセンター、レベニューセンター、プロフィットセンター、インベストメントセンターのように責任範囲を分け、権限に対応した指標で評価する必要がある。</p></div>
+      </details>
+      <details>
+        <summary>9. セグメント会計で管理可能利益を使う理由</summary>
+        <div class="answer"><p>管理可能利益は、限界利益から事業部長が管理できる個別固定費を差し引いた利益である。事業部長が影響を与えられない管理不能費や本社費まで含めると、人の業績評価としては不公平になりやすい。そのため、事業部長の評価には管理可能利益が適しており、事業部そのものの評価には管理不能個別固定費まで差し引いた事業部利益が使われる。</p></div>
+      </details>
     </section>
 
     <section id="later">
-      <h2>第12回以降の範囲</h2>
+      <h2>第13回以降の範囲</h2>
       <div class="grid">
-        <article class="card"><h3>第12回 予算管理</h3><p>予算編成、予算統制、予算ゲーム、会計コントロールの限界。</p></article>
         <article class="card"><h3>第13回 原価計算</h3><p>原価計算の基本、製品原価、製造業の計算構造。</p></article>
         <article class="card"><h3>第14回 コスト・マネジメント</h3><p>コスト抑制、原価低減、予測される原価の管理。</p></article>
       </div>
