@@ -329,7 +329,7 @@
     <div class="hero">
       <p class="eyebrow">第11回から第14回</p>
       <h1>会計学 第3回テスト対策</h1>
-      <p class="lead">付加価値、生産性、予算管理、責任会計、原価計算、コスト・マネジメントを扱う範囲です。第11回と第12回は、用語の意味と「なぜその仕組みが必要か」を中心に整理しています。</p>
+      <p class="lead">付加価値、生産性、予算管理、責任会計、原価計算、CVP分析、コスト・マネジメントを扱う範囲です。第13回まで、用語の意味と「なぜその仕組みが必要か」を中心に整理しています。</p>
     </div>
   </header>
 
@@ -344,8 +344,12 @@
       <a href="#budget-methods">予算編成と課題</a>
       <a href="#responsibility">責任会計</a>
       <a href="#segment">セグメント会計</a>
+      <a href="#class13">第13回 原価計算</a>
+      <a href="#cost-types">原価の分類</a>
+      <a href="#cvp">CVP分析</a>
+      <a href="#leverage">営業レバレッジ</a>
       <a href="#questions">予想される記述</a>
-      <a href="#later">第13回以降</a>
+      <a href="#later">第14回以降</a>
     </nav>
 
     <main>
@@ -539,6 +543,144 @@
       </div>
     </section>
 
+    <section id="class13">
+      <h2>第13回 コストマネジメント</h2>
+      <p>第13回は、原価計算とCVP分析です。製造業では、材料・労働力・経費を使って製品を作るため、製品1個をいくらで製造したのかを知る必要があります。そのための仕組みが原価計算です。</p>
+      <div class="notice">
+        <p><strong>原価計算:</strong> 製品やサービスを作るために発生した原価を、目的に応じて集計・分類し、財務諸表作成、原価管理、利益計画、意思決定に役立てる仕組み。</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <h3>財務諸表作成目的</h3>
+          <p>正確な製品原価を計算し、棚卸資産や売上原価としてB/S・P/Lに反映します。</p>
+        </article>
+        <article class="card">
+          <h3>原価管理目的</h3>
+          <p>標準原価と実際原価を比較し、材料や労働力のムダを把握して改善します。</p>
+        </article>
+        <article class="card">
+          <h3>利益管理目的</h3>
+          <p>どれだけ販売すれば目標利益を得られるかを考えるために使います。</p>
+        </article>
+        <article class="card">
+          <h3>意思決定目的</h3>
+          <p>自製か外注か、設備投資をするか、どの製品を重視するかなどの判断に使います。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="cost-types">
+      <h2>原価の分類</h2>
+      <p>原価計算では、まず「何に使ったか」「どの製品に直接結びつくか」「どこで発生したか」を分けて考えます。</p>
+      <table class="compare-table" aria-label="原価の分類">
+        <thead><tr><th>分類</th><th>意味</th><th>例</th></tr></thead>
+        <tbody>
+          <tr><td data-label="分類">材料費</td><td data-label="意味">製品製造のための物品の消費高。</td><td data-label="例">素材、買入部品費、燃料、工場消耗品。</td></tr>
+          <tr><td data-label="分類">労務費</td><td data-label="意味">製品製造のための労働力の消費高。</td><td data-label="例">現場作業員の賃金、工場監督者の給料。</td></tr>
+          <tr><td data-label="分類">経費</td><td data-label="意味">材料費・労務費以外の製造原価。</td><td data-label="例">減価償却費、賃借料、水道光熱費。</td></tr>
+        </tbody>
+      </table>
+      <div class="figure-grid">
+        <article class="figure-card">
+          <h3>直接費</h3>
+          <p>特定の製品に直接跡付けできる原価。製品へ直接集計することを直課といいます。</p>
+        </article>
+        <article class="figure-card">
+          <h3>間接費</h3>
+          <p>特定の製品に直接認識できない原価。一定の基準で製品へ割り当てることを配賦といいます。</p>
+        </article>
+      </div>
+      <div class="process-steps" aria-label="原価計算の流れ">
+        <div class="process-step"><strong>費目別計算</strong><span>材料費<br>労務費<br>経費</span></div>
+        <div class="process-step"><strong>部門別計算</strong><span>どこで<br>発生したか</span></div>
+        <div class="process-step"><strong>製品別計算</strong><span>どの製品の<br>ためか</span></div>
+        <div class="process-step emphasis"><strong>製品原価</strong><span>1個あたりの<br>原価へ</span></div>
+      </div>
+      <div class="stack-list">
+        <div class="stack-item"><strong>材料・賃金・経費</strong><span>直接費は仕掛品へ、間接費は製造間接費へ集める。</span></div>
+        <div class="stack-item"><strong>仕掛品</strong><span>製造途中の原価を集計し、完成した分を製品へ振り替える。</span></div>
+        <div class="stack-item"><strong>製品</strong><span>販売されるまでは棚卸資産として残り、販売時に売上原価になる。</span></div>
+      </div>
+    </section>
+
+    <section id="cvp">
+      <h2>CVP分析</h2>
+      <p>CVP分析は、原価（Cost）、営業量（Volume）、利益（Profit）の関係を見る分析です。販売数量や売上高が変わると、費用や利益がどう変わるかを考えます。</p>
+      <div class="grid">
+        <article class="card">
+          <h3>変動費</h3>
+          <p>操業度に比例して増減する原価。直接材料費など。</p>
+        </article>
+        <article class="card">
+          <h3>固定費</h3>
+          <p>短期では操業度が変わっても金額が変わらない原価。減価償却費や賃借料など。</p>
+        </article>
+      </div>
+      <div class="formula"><span>利益</span><span>=</span><span>売上高</span><span>-</span><span>（変動費 + 固定費）</span></div>
+      <div class="formula"><span>限界利益</span><span>=</span><span>売上高</span><span>-</span><span>変動費</span></div>
+      <div class="formula"><span>限界利益率</span><span>=</span><span>限界利益</span><span>÷</span><span>売上高</span><span>× 100</span></div>
+      <table class="compare-table" aria-label="パン工場のCVP例">
+        <thead><tr><th>項目</th><th>金額</th><th>意味</th></tr></thead>
+        <tbody>
+          <tr><td data-label="項目">販売価格</td><td data-label="金額">300円 / 斤</td><td data-label="意味">1斤売ったときの売上。</td></tr>
+          <tr><td data-label="項目">変動費</td><td data-label="金額">120円 / 斤</td><td data-label="意味">1斤作るたびに増える材料費。</td></tr>
+          <tr><td data-label="項目">限界利益</td><td data-label="金額">180円 / 斤</td><td data-label="意味">固定費を回収し、利益を生むための1斤あたりの余力。</td></tr>
+          <tr><td data-label="項目">固定費</td><td data-label="金額">90万円 / 月</td><td data-label="意味">家賃、その他費用、人件費の合計。</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="leverage">
+      <h2>損益分岐点と営業レバレッジ</h2>
+      <div class="figure-grid">
+        <article class="figure-card">
+          <h3>損益分岐点</h3>
+          <p>売上と費用が等しく、営業利益がゼロになる点です。固定費を限界利益で回収し終える販売量を求めます。</p>
+          <div class="formula"><span>損益分岐点販売量</span><span>=</span><span>固定費</span><span>÷</span><span>1個あたり限界利益</span></div>
+          <div class="formula"><span>損益分岐点売上高</span><span>=</span><span>固定費</span><span>÷</span><span>限界利益率</span></div>
+        </article>
+        <article class="figure-card">
+          <h3>目標利益売上高</h3>
+          <p>固定費に希望営業利益を足して、限界利益率で割り戻します。</p>
+          <div class="formula"><span>目標売上高</span><span>=</span><span>（固定費 + 希望営業利益）</span><span>÷</span><span>限界利益率</span></div>
+          <p>パン工場で希望利益18万円なら、（90万円 + 18万円）÷ 60% = 180万円、販売量は6,000斤です。</p>
+        </article>
+      </div>
+      <div class="formula"><span>安全余裕率</span><span>=</span><span>営業利益</span><span>÷</span><span>限界利益</span><span>× 100</span></div>
+      <div class="formula"><span>営業レバレッジ係数</span><span>=</span><span>限界利益</span><span>÷</span><span>営業利益</span></div>
+      <div class="figure-grid">
+        <article class="figure-card">
+          <h3>A社</h3>
+          <table class="compare-table" aria-label="A社の損益計算書">
+            <thead><tr><th>項目</th><th>金額</th></tr></thead>
+            <tbody>
+              <tr><td data-label="項目">売上高</td><td data-label="金額">1,000,000円</td></tr>
+              <tr><td data-label="項目">変動費</td><td data-label="金額">400,000円</td></tr>
+              <tr><td data-label="項目">限界利益</td><td data-label="金額">600,000円</td></tr>
+              <tr><td data-label="項目">固定費</td><td data-label="金額">300,000円</td></tr>
+              <tr><td data-label="項目">営業利益</td><td data-label="金額">300,000円</td></tr>
+              <tr><td data-label="項目">営業レバレッジ係数</td><td data-label="金額">2</td></tr>
+            </tbody>
+          </table>
+        </article>
+        <article class="figure-card">
+          <h3>B社</h3>
+          <table class="compare-table" aria-label="B社の損益計算書">
+            <thead><tr><th>項目</th><th>金額</th></tr></thead>
+            <tbody>
+              <tr><td data-label="項目">売上高</td><td data-label="金額">1,000,000円</td></tr>
+              <tr><td data-label="項目">変動費</td><td data-label="金額">550,000円</td></tr>
+              <tr><td data-label="項目">限界利益</td><td data-label="金額">450,000円</td></tr>
+              <tr><td data-label="項目">固定費</td><td data-label="金額">150,000円</td></tr>
+              <tr><td data-label="項目">営業利益</td><td data-label="金額">300,000円</td></tr>
+              <tr><td data-label="項目">営業レバレッジ係数</td><td data-label="金額">1.5</td></tr>
+            </tbody>
+          </table>
+        </article>
+      </div>
+      <p>営業レバレッジ係数は、固定費の利用の程度を測る尺度です。係数が高い会社は、売上が増えると利益も大きく増えますが、売上が落ちたときの利益低下も大きくなります。</p>
+    </section>
+
     <section id="questions">
       <h2>予想される記述・計算問題</h2>
       <h3>第11回 生産性分析</h3>
@@ -579,12 +721,32 @@
         <summary>9. セグメント会計で管理可能利益を使う理由</summary>
         <div class="answer"><p>管理可能利益は、限界利益から事業部長が管理できる個別固定費を差し引いた利益である。事業部長が影響を与えられない管理不能費や本社費まで含めると、人の業績評価としては不公平になりやすい。そのため、事業部長の評価には管理可能利益が適しており、事業部そのものの評価には管理不能個別固定費まで差し引いた事業部利益が使われる。</p></div>
       </details>
+      <h3>第13回 原価計算・CVP分析</h3>
+      <details>
+        <summary>10. なぜ原価計算が必要かを説明する</summary>
+        <div class="answer"><p>原価計算は、製品1個をいくらで製造したかを把握するために必要である。正確な原価情報があれば、棚卸資産や売上原価を計算して財務諸表を作成できる。また、標準原価と実際原価を比較してムダを見つけたり、目標利益を得るための販売量を考えたり、自製・外注や設備投資などの意思決定にも役立てられる。</p></div>
+      </details>
+      <details>
+        <summary>11. 直接費と間接費、直課と配賦の違いを説明する</summary>
+        <div class="answer"><p>直接費は、特定の製品に直接跡付けできる製造原価であり、製品へ直接集計することを直課という。間接費は、特定の製品に直接認識できない製造原価であり、一定の基準で製品へ割り当てることを配賦という。どの製品に使ったか分かるかどうかが区別のポイントである。</p></div>
+      </details>
+      <details>
+        <summary>12. パン工場の例で損益分岐点販売量と売上高を求める</summary>
+        <div class="answer"><p>販売価格300円、1斤あたり変動費120円なので、1斤あたり限界利益は300円 - 120円 = 180円である。固定費は90万円なので、損益分岐点販売量は900,000円 ÷ 180円 = 5,000斤となる。損益分岐点売上高は300円 × 5,000斤 = 150万円である。</p></div>
+      </details>
+      <details>
+        <summary>13. 希望営業利益18万円を達成する売上高を求める</summary>
+        <div class="answer"><p>限界利益率は180円 ÷ 300円 = 60%である。希望営業利益18万円を達成するには、固定費90万円と希望営業利益18万円を合わせた108万円を限界利益で回収する必要がある。したがって、目標売上高は108万円 ÷ 60% = 180万円、販売量は180万円 ÷ 300円 = 6,000斤である。</p></div>
+      </details>
+      <details>
+        <summary>14. 営業レバレッジ係数が高い会社の特徴を説明する</summary>
+        <div class="answer"><p>営業レバレッジ係数は、限界利益を営業利益で割って求め、固定費の利用の程度を表す。係数が高い会社は固定費の割合が大きく、売上が増えると営業利益が大きく増える。一方で、売上が減少した場合には営業利益も大きく減りやすい。そのため、景気が上向く局面では設備投資の効果が出やすいが、景気が悪い局面では外注など変動費化も検討される。</p></div>
+      </details>
     </section>
 
     <section id="later">
-      <h2>第13回以降の範囲</h2>
+      <h2>第14回以降の範囲</h2>
       <div class="grid">
-        <article class="card"><h3>第13回 原価計算</h3><p>原価計算の基本、製品原価、製造業の計算構造。</p></article>
         <article class="card"><h3>第14回 コスト・マネジメント</h3><p>コスト抑制、原価低減、予測される原価の管理。</p></article>
       </div>
     </section>
