@@ -160,6 +160,31 @@
     }
     details[open] > summary { background: var(--soft); border-bottom: 1px solid var(--line); }
     .answer { padding: 14px 16px 16px; }
+    .exercise {
+      border-top: 1px solid var(--line);
+      padding: 18px 0;
+    }
+    .exercise:first-of-type { border-top: 0; padding-top: 4px; }
+    .exercise:last-child { padding-bottom: 0; }
+    .exercise h3 { margin-bottom: 10px; }
+    .question-lead {
+      margin: 10px 0;
+      border-left: 4px solid var(--accent-2);
+      background: #fff9f2;
+      padding: 10px 12px;
+      font-weight: 800;
+    }
+    .calc-steps {
+      display: grid;
+      gap: 8px;
+      margin: 10px 0;
+    }
+    .calc-step {
+      border-left: 4px solid var(--accent);
+      background: var(--soft);
+      padding: 9px 12px;
+    }
+    .calc-step strong { display: block; }
     .memory-list { display: grid; gap: 8px; margin: 12px 0; }
     .memory-item { border-left: 4px solid var(--accent); background: var(--soft); padding: 10px 12px; }
     .process-steps {
@@ -329,7 +354,7 @@
     <div class="hero">
       <p class="eyebrow">第11回から第14回</p>
       <h1>会計学 第3回テスト対策</h1>
-      <p class="lead">付加価値、生産性、予算管理、責任会計、原価計算、CVP分析、コスト・マネジメントを扱う範囲です。第13回まで、用語の意味と「なぜその仕組みが必要か」を中心に整理しています。</p>
+      <p class="lead">付加価値、生産性、予算管理、責任会計、原価計算、CVP分析、ABC、原価企画を扱う範囲です。計算、資料の読み取り、「なぜその仕組みが必要か」を本番の記述式に合わせて整理しています。</p>
     </div>
   </header>
 
@@ -348,8 +373,12 @@
       <a href="#cost-types">原価の分類</a>
       <a href="#cvp">CVP分析</a>
       <a href="#leverage">営業レバレッジ</a>
-      <a href="#questions">予想される記述</a>
-      <a href="#later">第14回以降</a>
+      <a href="#cvp-drill">CVP・BEP計算演習</a>
+      <a href="#class14">第14回 原価企画</a>
+      <a href="#abc">活動基準原価計算</a>
+      <a href="#target-costing">原価企画</a>
+      <a href="#predicted-test">第3回テスト予想</a>
+      <a href="#questions">範囲別問題</a>
     </nav>
 
     <main>
@@ -681,8 +710,210 @@
       <p>営業レバレッジ係数は、固定費の利用の程度を測る尺度です。係数が高い会社は、売上が増えると利益も大きく増えますが、売上が落ちたときの利益低下も大きくなります。</p>
     </section>
 
+    <section id="cvp-drill">
+      <h2>CVP・BEP計算演習</h2>
+      <p>第13回資料の数値と計算順序に沿った演習です。最初に「1個あたり限界利益」と「限界利益率」を出すと、その後の式が崩れにくくなります。</p>
+      <div class="notice">
+        <p><strong>計算の順番:</strong> ①限界利益 → ②限界利益率 → ③損益分岐点 → ④目標利益・安全余裕率・営業レバレッジ。</p>
+      </div>
+
+      <article class="exercise">
+        <h3>問題1 基本の損益分岐点</h3>
+        <p class="question-lead">食パン1斤の販売価格は300円、変動費は120円、1か月の固定費は90万円である。損益分岐点販売量と損益分岐点売上高を求めなさい。</p>
+        <details>
+          <summary>解答と計算過程を開く</summary>
+          <div class="answer">
+            <div class="calc-steps">
+              <div class="calc-step"><strong>1斤あたり限界利益</strong>300円 - 120円 = 180円</div>
+              <div class="calc-step"><strong>限界利益率</strong>180円 ÷ 300円 × 100 = 60%</div>
+              <div class="calc-step"><strong>損益分岐点販売量</strong>900,000円 ÷ 180円 = 5,000斤</div>
+              <div class="calc-step"><strong>損益分岐点売上高</strong>900,000円 ÷ 60% = 1,500,000円</div>
+            </div>
+            <p><strong>答え:</strong> 5,000斤、150万円。ここでは限界利益の合計90万円が固定費90万円と等しくなり、営業利益は0円です。</p>
+          </div>
+        </details>
+      </article>
+
+      <article class="exercise">
+        <h3>問題2 希望営業利益を含むCVP</h3>
+        <p class="question-lead">問題1と同じパン工場が、1か月に18万円の営業利益を得るために必要な販売量と売上高を求めなさい。</p>
+        <details>
+          <summary>解答と計算過程を開く</summary>
+          <div class="answer">
+            <div class="calc-steps">
+              <div class="calc-step"><strong>必要な限界利益</strong>固定費90万円 + 希望営業利益18万円 = 108万円</div>
+              <div class="calc-step"><strong>必要販売量</strong>1,080,000円 ÷ 180円 = 6,000斤</div>
+              <div class="calc-step"><strong>必要売上高</strong>1,080,000円 ÷ 60% = 1,800,000円</div>
+            </div>
+            <p><strong>答え:</strong> 6,000斤、180万円。希望利益を求めるときは、固定費だけでなく希望利益も限界利益で回収します。</p>
+          </div>
+        </details>
+      </article>
+
+      <article class="exercise">
+        <h3>問題3 安全余裕率と営業レバレッジ</h3>
+        <p class="question-lead">売上高80万円、変動費率40%、固定費30万円の企業について、営業利益、損益分岐点売上高、安全余裕率、営業レバレッジ係数を求めなさい。</p>
+        <details>
+          <summary>解答と計算過程を開く</summary>
+          <div class="answer">
+            <div class="calc-steps">
+              <div class="calc-step"><strong>限界利益</strong>80万円 ×（1 - 40%）= 48万円</div>
+              <div class="calc-step"><strong>営業利益</strong>48万円 - 30万円 = 18万円</div>
+              <div class="calc-step"><strong>損益分岐点売上高</strong>30万円 ÷ 60% = 50万円</div>
+              <div class="calc-step"><strong>安全余裕率</strong>（80万円 - 50万円）÷ 80万円 × 100 = 37.5%</div>
+              <div class="calc-step"><strong>営業レバレッジ係数</strong>48万円 ÷ 18万円 = 約2.67</div>
+            </div>
+            <p>売上高は損益分岐点を37.5%上回っています。売上高が1%変化すると、営業利益は同じ方向へ約2.67%変化すると読めます。</p>
+          </div>
+        </details>
+      </article>
+
+      <article class="exercise">
+        <h3>問題4 本番形式の総合問題</h3>
+        <p class="question-lead">製品の販売価格は1個500円、変動費は1個200円、固定費は月120万円である。月5,000個を販売する計画について、①限界利益率、②損益分岐点販売量、③予定営業利益、④安全余裕率、⑤営業レバレッジ係数を求め、収益構造から言えることを述べなさい。</p>
+        <details>
+          <summary>解答と計算過程を開く</summary>
+          <div class="answer">
+            <div class="calc-steps">
+              <div class="calc-step"><strong>限界利益率</strong>（500円 - 200円）÷ 500円 × 100 = 60%</div>
+              <div class="calc-step"><strong>損益分岐点販売量</strong>1,200,000円 ÷ 300円 = 4,000個</div>
+              <div class="calc-step"><strong>予定営業利益</strong>300円 × 5,000個 - 1,200,000円 = 300,000円</div>
+              <div class="calc-step"><strong>安全余裕率</strong>（5,000個 - 4,000個）÷ 5,000個 × 100 = 20%</div>
+              <div class="calc-step"><strong>営業レバレッジ係数</strong>1,500,000円 ÷ 300,000円 = 5</div>
+            </div>
+            <p><strong>読み取り例:</strong> 現在は黒字だが、安全余裕率は20%であり、販売量が20%減ると損益分岐点に達する。また営業レバレッジ係数は5と高く、売上の変化が営業利益へ大きく影響する固定費型の収益構造である。</p>
+          </div>
+        </details>
+      </article>
+    </section>
+
+    <section id="class14">
+      <h2>第14回 原価企画</h2>
+      <p>第14回は、直接原価計算、活動基準原価計算（ABC）、原価企画です。共通する視点は、原価を集計するだけでなく、利益計画や意思決定に役立つ形へ組み替えることです。</p>
+      <div class="figure-grid">
+        <article class="figure-card">
+          <h3>全部原価計算</h3>
+          <p>発生した製造原価をすべて製品原価に含めます。固定製造間接費の一部は、売れ残った製品の棚卸資産として翌期へ繰り越されます。</p>
+        </article>
+        <article class="figure-card">
+          <h3>直接原価計算</h3>
+          <p>製品原価を変動費中心で計算し、当期の固定費はそのまま当期のP/Lへ計上します。CVPと同じ形なので、利益計画に使いやすい方式です。</p>
+        </article>
+      </div>
+      <table class="compare-table" aria-label="全部原価計算と直接原価計算の数値例">
+        <thead><tr><th>項目</th><th>全部原価計算</th><th>直接原価計算</th></tr></thead>
+        <tbody>
+          <tr><td data-label="項目">条件</td><td data-label="全部原価計算">2個生産・1個販売、固定製造間接費1,000円、販売価格800円</td><td data-label="直接原価計算">同じ条件</td></tr>
+          <tr><td data-label="項目">当期の費用</td><td data-label="全部原価計算">売上原価500円</td><td data-label="直接原価計算">固定費1,000円</td></tr>
+          <tr><td data-label="項目">期末製品</td><td data-label="全部原価計算">固定費500円を含む</td><td data-label="直接原価計算">固定費を繰り越さない</td></tr>
+          <tr><td data-label="項目">営業利益</td><td data-label="全部原価計算">300円</td><td data-label="直接原価計算">マイナス200円</td></tr>
+        </tbody>
+      </table>
+      <div class="notice">
+        <p><strong>利益差が生じる理由:</strong> 全部原価計算では、売れ残った製品に含まれる固定製造間接費が棚卸資産として翌期へ繰り越されます。直接原価計算では当期の固定費を全額費用にするため、生産量を増やしただけで当期利益を大きく見せにくくなります。</p>
+      </div>
+    </section>
+
+    <section id="abc">
+      <h2>活動基準原価計算（ABC）</h2>
+      <p>ABCは、製造間接費を活動ごとの原価へ分け、段取り回数、加工回数、運搬回数など、その活動を発生させる要因を使って製品へ配賦する方法です。</p>
+      <div class="value-flow" aria-label="ABCによる間接費配賦の流れ">
+        <div class="flow-box">製造間接費</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">組立・加工・段取・運搬などの活動</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box value">活動回数に応じて製品へ配賦</div>
+      </div>
+      <table class="compare-table" aria-label="伝統的原価計算とABCの比較例">
+        <thead><tr><th>製品</th><th>生産量</th><th>伝統的計算</th><th>ABC</th><th>読み取り</th></tr></thead>
+        <tbody>
+          <tr><td data-label="製品">A オーダー品</td><td data-label="生産量">10個</td><td data-label="伝統的計算">合計25万円<br>1個2.5万円</td><td data-label="ABC">合計65万円<br>1個6.5万円</td><td data-label="読み取り">少量でも段取などの活動を多く使うため、伝統的計算では過小配賦されていた。</td></tr>
+          <tr><td data-label="製品">B 規格品</td><td data-label="生産量">200個</td><td data-label="伝統的計算">合計575万円<br>1個2.875万円</td><td data-label="ABC">合計535万円<br>1個2.675万円</td><td data-label="読み取り">大量生産というだけで間接費を多く負担しており、伝統的計算では過大配賦されていた。</td></tr>
+        </tbody>
+      </table>
+      <div class="notice">
+        <p><strong>なぜABCが必要か:</strong> 多品種少量生産や自動化が進むと間接費が増え、生産量だけによる配賦では、段取りや運搬を多く必要とする少量品の原価が低く見えます。ABCは活動の消費量に合わせて配賦し、価格設定や製品構成の判断を正確にします。</p>
+      </div>
+    </section>
+
+    <section id="target-costing">
+      <h2>原価企画</h2>
+      <p>原価企画は、企画・設計という製品開発の源流で、関連部署の知恵を集めて原価を作り込む戦略的管理手法です。市場で受け入れられる価格から逆算するマーケットイン志向が特徴です。</p>
+      <div class="formula"><span>予定販売価格</span><span>-</span><span>目標利益</span><span>=</span><span>許容原価</span></div>
+      <div class="formula"><span>成行原価</span><span>-</span><span>許容原価</span><span>=</span><span>必要な原価低減額</span></div>
+      <table class="compare-table" aria-label="原価企画の計算例">
+        <thead><tr><th>項目</th><th>金額</th><th>担当・意味</th></tr></thead>
+        <tbody>
+          <tr><td data-label="項目">予定販売価格</td><td data-label="金額">200万円</td><td data-label="担当・意味">営業部門が顧客・市場から見積もる。</td></tr>
+          <tr><td data-label="項目">目標利益</td><td data-label="金額">50万円</td><td data-label="担当・意味">経営陣が確保したい利益。</td></tr>
+          <tr><td data-label="項目">許容原価</td><td data-label="金額">150万円</td><td data-label="担当・意味">市場価格と目標利益から逆算した上限。</td></tr>
+          <tr><td data-label="項目">成行原価</td><td data-label="金額">180万円</td><td data-label="担当・意味">現在の設計・技術のまま製造した場合の見積原価。</td></tr>
+          <tr><td data-label="項目">原価低減額</td><td data-label="金額">30万円</td><td data-label="担当・意味">成行原価を許容原価へ近づけるための目標。</td></tr>
+        </tbody>
+      </table>
+      <div class="process-steps" aria-label="原価企画のPlan Do See">
+        <div class="process-step"><strong>Plan</strong><span>目標原価を設定</span></div>
+        <div class="process-step"><strong>Do</strong><span>VEを用いて設計</span></div>
+        <div class="process-step emphasis"><strong>See</strong><span>差異と原因を分析</span></div>
+      </div>
+      <div class="formula"><span>価値（V）</span><span>=</span><span>機能（U）</span><span>÷</span><span>原価（C）</span></div>
+      <p>VEでは、顧客が必要とする機能を落とさずに原価を下げ、価値を高めます。製造開始後よりも企画・設計段階の方が、材料、構造、部品数、製造方法などを変えやすいため、大部分の原価が決まる前に取り組むことが重要です。</p>
+    </section>
+
+    <section id="predicted-test">
+      <h2>第3回テスト予想 4問</h2>
+      <p>第1回は「資料を読んで言えること」と「なぜ必要か」、第2回は「計算して読み取る問題」1問と、仕組みの理由・活用を説明する問題3問でした。その傾向と、CVPまたはBEPが計算問題として出るという情報を合わせた本番想定です。</p>
+
+      <article class="exercise">
+        <h3>予想問1 CVP・BEPを計算し、収益構造を説明する</h3>
+        <table class="compare-table" aria-label="予想問1のデータ">
+          <thead><tr><th>販売価格</th><th>単位変動費</th><th>月間固定費</th><th>予定販売量</th></tr></thead>
+          <tbody><tr><td data-label="販売価格">500円 / 個</td><td data-label="単位変動費">200円 / 個</td><td data-label="月間固定費">120万円</td><td data-label="予定販売量">5,000個</td></tr></tbody>
+        </table>
+        <p class="question-lead">①限界利益率、②損益分岐点販売量、③予定営業利益、④安全余裕率、⑤営業レバレッジ係数を求め、数値から言えることを述べなさい。</p>
+        <details><summary>解答例を開く</summary><div class="answer"><p>限界利益は1個300円、限界利益率は60%である。損益分岐点販売量は120万円 ÷ 300円 = 4,000個。予定営業利益は300円 × 5,000個 - 120万円 = 30万円。安全余裕率は（5,000個 - 4,000個）÷ 5,000個 × 100 = 20%、営業レバレッジ係数は150万円 ÷ 30万円 = 5である。したがって現在は黒字だが、販売量が20%減ると利益がゼロになり、売上変動が利益へ大きく響く固定費型の企業といえる。</p></div></details>
+      </article>
+
+      <article class="exercise">
+        <h3>予想問2 全部原価計算と直接原価計算の利益差を読み取る</h3>
+        <table class="compare-table" aria-label="予想問2の損益比較">
+          <thead><tr><th>項目</th><th>全部原価計算</th><th>直接原価計算</th></tr></thead>
+          <tbody>
+            <tr><td data-label="項目">売上高</td><td data-label="全部原価計算">800円</td><td data-label="直接原価計算">800円</td></tr>
+            <tr><td data-label="項目">当期費用</td><td data-label="全部原価計算">売上原価500円</td><td data-label="直接原価計算">固定費1,000円</td></tr>
+            <tr><td data-label="項目">営業利益</td><td data-label="全部原価計算">300円</td><td data-label="直接原価計算">マイナス200円</td></tr>
+          </tbody>
+        </table>
+        <p class="question-lead">同じ販売実績なのに利益が異なる理由を説明し、利益管理に直接原価計算を使う利点を述べなさい。</p>
+        <details><summary>解答例を開く</summary><div class="answer"><p>全部原価計算では、固定製造間接費1,000円を生産した2個へ配賦し、売れ残った1個分の500円を棚卸資産として翌期へ繰り越すため、当期費用は500円にとどまる。直接原価計算では固定費1,000円を当期に全額費用計上するため、営業利益はマイナス200円となる。直接原価計算は、生産量を増やして在庫を積み上げただけで利益が増える影響を除き、販売量と利益の関係を把握しやすい。</p></div></details>
+      </article>
+
+      <article class="exercise">
+        <h3>予想問3 ABCの数値から、原価のゆがみと対応を述べる</h3>
+        <table class="compare-table" aria-label="予想問3のABC比較">
+          <thead><tr><th>製品</th><th>特徴</th><th>伝統的計算の単価</th><th>ABCの単価</th></tr></thead>
+          <tbody>
+            <tr><td data-label="製品">A</td><td data-label="特徴">オーダー品・10個</td><td data-label="伝統的計算の単価">2.5万円</td><td data-label="ABCの単価">6.5万円</td></tr>
+            <tr><td data-label="製品">B</td><td data-label="特徴">規格品・200個</td><td data-label="伝統的計算の単価">2.875万円</td><td data-label="ABCの単価">2.675万円</td></tr>
+          </tbody>
+        </table>
+        <p class="question-lead">A製品の原価がABCで大きく上昇した理由と、この情報を経営にどう利用できるか述べなさい。</p>
+        <details><summary>解答例を開く</summary><div class="answer"><p>伝統的原価計算は生産量など単一の操業度基準で間接費を配賦するため、生産量の少ないA製品へ配賦される原価が少なくなっていた。しかしA製品はオーダー品であり、少量でも段取り、加工、運搬などの活動を多く消費する。ABCは活動回数に応じて配賦するため、A製品の実態に近い原価が表れた。この情報は、A製品の価格見直し、工程改善、受注条件の変更、製品構成の判断に利用できる。</p></div></details>
+      </article>
+
+      <article class="exercise">
+        <h3>予想問4 なぜ原価企画を製造前に行うのか</h3>
+        <table class="compare-table" aria-label="予想問4の原価企画データ">
+          <thead><tr><th>予定販売価格</th><th>目標利益</th><th>成行原価</th></tr></thead>
+          <tbody><tr><td data-label="予定販売価格">200万円</td><td data-label="目標利益">50万円</td><td data-label="成行原価">180万円</td></tr></tbody>
+        </table>
+        <p class="question-lead">許容原価と必要な原価低減額を求め、原価企画を企画・設計段階で行う理由をVEと関連づけて説明しなさい。</p>
+        <details><summary>解答例を開く</summary><div class="answer"><p>許容原価は200万円 - 50万円 = 150万円であり、必要な原価低減額は180万円 - 150万円 = 30万円である。製品の原価の大部分は、材料、構造、部品数、製造方法などを決める企画・設計段階で実質的に決まる。製造開始後では設計変更が難しく、削減できる範囲が小さいため、製造前に原価を作り込む必要がある。VEを用いて顧客が求める機能を落とさずに原価を下げれば、製品価値を高めながら目標利益を確保できる。</p></div></details>
+      </article>
+    </section>
+
     <section id="questions">
-      <h2>予想される記述・計算問題</h2>
+      <h2>範囲別の記述・計算問題</h2>
       <h3>第11回 生産性分析</h3>
       <details>
         <summary>1. 付加価値とは何か。図の数値から求める</summary>
@@ -742,13 +973,23 @@
         <summary>14. 営業レバレッジ係数が高い会社の特徴を説明する</summary>
         <div class="answer"><p>営業レバレッジ係数は、限界利益を営業利益で割って求め、固定費の利用の程度を表す。係数が高い会社は固定費の割合が大きく、売上が増えると営業利益が大きく増える。一方で、売上が減少した場合には営業利益も大きく減りやすい。そのため、景気が上向く局面では設備投資の効果が出やすいが、景気が悪い局面では外注など変動費化も検討される。</p></div>
       </details>
-    </section>
-
-    <section id="later">
-      <h2>第14回以降の範囲</h2>
-      <div class="grid">
-        <article class="card"><h3>第14回 コスト・マネジメント</h3><p>コスト抑制、原価低減、予測される原価の管理。</p></article>
-      </div>
+      <h3>第14回 直接原価計算・ABC・原価企画</h3>
+      <details>
+        <summary>15. 全部原価計算と直接原価計算で利益が異なる理由</summary>
+        <div class="answer"><p>全部原価計算は固定製造間接費を製品原価へ含めるため、売れ残った製品に含まれる固定費は棚卸資産として翌期へ繰り越される。一方、直接原価計算は当期に発生した固定費を当期の費用として計上する。そのため、生産量が販売量を上回って在庫が増えた期には、固定費の一部を繰り越す全部原価計算の利益が高くなる。</p></div>
+      </details>
+      <details>
+        <summary>16. なぜABCは少量生産品の原価把握に役立つのか</summary>
+        <div class="answer"><p>少量生産品は生産量が少なくても、段取り、設計変更、運搬、検査などの活動を多く必要とする場合がある。生産量だけで間接費を配賦すると、これらの活動コストが大量生産品へ多く配賦され、少量生産品の原価が過小に見える。ABCは活動回数などを基準に配賦するため、活動の消費実態に近い原価を把握できる。</p></div>
+      </details>
+      <details>
+        <summary>17. 原価企画がマーケットイン志向と呼ばれる理由</summary>
+        <div class="answer"><p>原価企画では、実際原価に利益を加えて販売価格を決めるのではなく、まず顧客が受け入れる予定販売価格を市場から決める。そこから企業が確保したい目標利益を差し引いて許容原価を求め、その範囲で製品を設計する。そのため、企業内部の都合ではなく顧客と市場を出発点にするマーケットイン志向と呼ばれる。</p></div>
+      </details>
+      <details>
+        <summary>18. VEは原価企画にどのように役立つか</summary>
+        <div class="answer"><p>VEは、価値を機能と原価の関係で捉え、顧客が求める機能を維持しながら原価を下げることで価値を高める手法である。成行原価が許容原価を上回る場合に、材料、部品、構造、製造方法を見直し、必要機能を損なわずに目標原価へ近づけるために利用される。</p></div>
+      </details>
     </section>
     </main>
   </div>
