@@ -31,12 +31,24 @@
     h1 { margin: 0; font-size: 2.05rem; line-height: 1.25; letter-spacing: 0; }
     .lead { max-width: 780px; margin: 14px 0 0; color: var(--muted); }
     .layout {
+      position: relative;
       display: grid;
       grid-template-columns: 260px minmax(0, 1fr);
       gap: 28px;
       max-width: 1080px;
       margin: 0 auto;
       padding: 28px 24px 58px;
+    }
+    .layout:has(.toc-state:checked) {
+      grid-template-columns: 48px minmax(0, 1fr);
+      max-width: 1240px;
+    }
+    .toc-state {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
     }
     .side-nav {
       position: sticky;
@@ -48,10 +60,42 @@
       box-shadow: var(--shadow);
       padding: 14px;
     }
-    .side-nav h2 {
+    .toc-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
       margin: 0 0 8px;
+    }
+    .side-nav h2 {
+      margin: 0;
       font-size: .95rem;
     }
+    .toc-collapse {
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      cursor: pointer;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .toc-collapse::before { content: "<"; }
+    .layout:has(.toc-state:checked) .side-nav { padding: 8px; }
+    .layout:has(.toc-state:checked) .toc-header {
+      justify-content: center;
+      margin: 0;
+    }
+    .layout:has(.toc-state:checked) .toc-title,
+    .layout:has(.toc-state:checked) .side-nav a {
+      display: none;
+    }
+    .layout:has(.toc-state:checked) .toc-collapse::before { content: ">"; }
     .side-nav a {
       display: block;
       border-radius: 6px;
@@ -311,6 +355,11 @@
       .hero { padding-inline: 16px; }
       .layout { display: block; padding: 28px 16px 58px; }
       .side-nav { position: static; margin-bottom: 18px; }
+      .toc-header {
+        display: block;
+        margin: 0 0 8px;
+      }
+      .toc-collapse { display: none; }
       h1 { font-size: 1.65rem; }
       .grid { grid-template-columns: 1fr; }
       .figure-grid { grid-template-columns: 1fr; }
@@ -359,8 +408,12 @@
   </header>
 
   <div class="layout">
+    <input class="toc-state" type="checkbox" id="toc-state" aria-label="目次をたたむ">
     <nav class="side-nav" aria-label="目次">
-      <h2>目次</h2>
+      <div class="toc-header">
+        <h2 class="toc-title">目次</h2>
+        <label class="toc-collapse" for="toc-state" title="目次をたたむ"></label>
+      </div>
       <a href="#class11">第11回 生産性分析</a>
       <a href="#methods">付加価値の算定</a>
       <a href="#productivity">労働生産性</a>
@@ -861,8 +914,8 @@
     </section>
 
     <section id="predicted-test">
-      <h2>第3回テスト予想 4問</h2>
-      <p>第1回は「資料を読んで言えること」と「なぜ必要か」、第2回は「計算して読み取る問題」1問と、仕組みの理由・活用を説明する問題3問でした。その傾向と、CVPまたはBEPが計算問題として出るという情報を合わせた本番想定です。</p>
+      <h2>第3回テスト予想 12問</h2>
+      <p>第1回は「資料を読んで言えること」と「なぜ必要か」、第2回は「計算して読み取る問題」1問と、仕組みの理由・活用を説明する問題3問でした。その傾向と、CVPまたはBEPが計算問題として出るという情報を合わせた予想候補です。問1から問4を最有力とし、問5以降は同じ出題型で差し替えられそうな候補を並べています。</p>
 
       <article class="exercise">
         <h3>予想問1 CVP・BEPを計算し、収益構造を説明する</h3>
@@ -909,6 +962,88 @@
         </table>
         <p class="question-lead">許容原価と必要な原価低減額を求め、原価企画を企画・設計段階で行う理由をVEと関連づけて説明しなさい。</p>
         <details><summary>解答例を開く</summary><div class="answer"><p>許容原価は200万円 - 50万円 = 150万円であり、必要な原価低減額は180万円 - 150万円 = 30万円である。製品の原価の大部分は、材料、構造、部品数、製造方法などを決める企画・設計段階で実質的に決まる。製造開始後では設計変更が難しく、削減できる範囲が小さいため、製造前に原価を作り込む必要がある。VEを用いて顧客が求める機能を落とさずに原価を下げれば、製品価値を高めながら目標利益を確保できる。</p></div></details>
+      </article>
+
+      <article class="exercise">
+        <h3>予想問5 付加価値と労働生産性を計算して読む</h3>
+        <table class="compare-table" aria-label="予想問5の生産性分析データ">
+          <thead><tr><th>売上高</th><th>原材料費</th><th>支払経費</th><th>人件費</th><th>平均従業員数</th></tr></thead>
+          <tbody><tr><td data-label="売上高">1億2,000万円</td><td data-label="原材料費">4,500万円</td><td data-label="支払経費">1,500万円</td><td data-label="人件費">3,000万円</td><td data-label="平均従業員数">20人</td></tr></tbody>
+        </table>
+        <p class="question-lead">控除法による付加価値額、労働生産性、付加価値労働分配率を求め、数値から言えることを述べなさい。</p>
+        <details><summary>解答例を開く</summary><div class="answer"><p>付加価値額は1億2,000万円 -（4,500万円 + 1,500万円）= 6,000万円である。労働生産性は6,000万円 ÷ 20人 = 300万円／人、付加価値労働分配率は3,000万円 ÷ 6,000万円 × 100 = 50%となる。従業員1人あたり300万円の付加価値を生み、その半分を人件費として分配していると読める。ただし、良否を判断するには同業他社や過年度との比較が必要である。</p></div></details>
+      </article>
+
+      <article class="exercise">
+        <h3>予想問6 予算差異を計算し、原因分析の必要性を述べる</h3>
+        <table class="compare-table" aria-label="予想問6の予算実績比較">
+          <thead><tr><th>項目</th><th>予算</th><th>実績</th></tr></thead>
+          <tbody>
+            <tr><td data-label="項目">売上高</td><td data-label="予算">1億円</td><td data-label="実績">9,200万円</td></tr>
+            <tr><td data-label="項目">費用</td><td data-label="予算">6,000万円</td><td data-label="実績">5,800万円</td></tr>
+          </tbody>
+        </table>
+        <p class="question-lead">予算利益と実績利益の差を求め、予算管理で差異の原因を調べる理由を説明しなさい。</p>
+        <details><summary>解答例を開く</summary><div class="answer"><p>予算利益は1億円 - 6,000万円 = 4,000万円、実績利益は9,200万円 - 5,800万円 = 3,400万円なので、利益は600万円の不利差異である。費用は予算より200万円少ないが、売上高が800万円不足した影響を補えていない。差異の金額だけでは、販売数量、販売価格、原価低減、活動縮小などの原因を区別できない。原因を特定し、改善行動や次期予算へ反映するために差異分析が必要である。</p></div></details>
+      </article>
+
+      <article class="exercise">
+        <h3>予想問7 責任センターと評価指標を対応させる</h3>
+        <table class="compare-table" aria-label="予想問7の管理者データ">
+          <thead><tr><th>管理者</th><th>与えられた権限</th></tr></thead>
+          <tbody>
+            <tr><td data-label="管理者">製造部長</td><td data-label="与えられた権限">製造費用を管理する</td></tr>
+            <tr><td data-label="管理者">営業部長</td><td data-label="与えられた権限">売上高を管理する</td></tr>
+            <tr><td data-label="管理者">事業部長</td><td data-label="与えられた権限">収益、費用、投資額を管理する</td></tr>
+          </tbody>
+        </table>
+        <p class="question-lead">各管理者を責任センターへ分類し、権限と責任を対応させる理由を述べなさい。</p>
+        <details><summary>解答例を開く</summary><div class="answer"><p>製造部長はコストセンター、営業部長はレベニューセンター、事業部長はインベストメントセンターに該当する。管理できない項目まで評価対象にすると、結果に責任を負わせても改善行動を選べず、公平な評価にならない。各管理者が意思決定できる範囲と評価指標を対応させることで、責任の所在を明確にし、目標に沿った行動を促せる。</p></div></details>
+      </article>
+
+      <article class="exercise">
+        <h3>予想問8 ROIと残余利益から投資案を判断する</h3>
+        <table class="compare-table" aria-label="予想問8の投資案データ">
+          <thead><tr><th>項目</th><th>既存事業</th><th>新規投資案</th></tr></thead>
+          <tbody>
+            <tr><td data-label="項目">利益</td><td data-label="既存事業">1,000万円</td><td data-label="新規投資案">120万円</td></tr>
+            <tr><td data-label="項目">投下資本</td><td data-label="既存事業">8,000万円</td><td data-label="新規投資案">1,000万円</td></tr>
+            <tr><td data-label="項目">要求収益率</td><td data-label="既存事業">10%</td><td data-label="新規投資案">10%</td></tr>
+          </tbody>
+        </table>
+        <p class="question-lead">既存事業と新規投資案のROI、新規投資案の残余利益を求め、事業部長が投資を拒否する可能性を説明しなさい。</p>
+        <details><summary>解答例を開く</summary><div class="answer"><p>既存事業のROIは1,000万円 ÷ 8,000万円 × 100 = 12.5%、新規投資案は120万円 ÷ 1,000万円 × 100 = 12%である。投資案の残余利益は120万円 -（1,000万円 × 10%）= 20万円で正となる。投資後の事業部ROIは1,120万円 ÷ 9,000万円 = 約12.44%へ低下するため、ROIで評価される事業部長は拒否する可能性がある。しかし投資案は要求収益率を上回り残余利益を20万円増やすため、全社的には受け入れる価値がある。</p></div></details>
+      </article>
+
+      <article class="exercise">
+        <h3>予想問9 直接費・間接費と直課・配賦を説明する</h3>
+        <p class="question-lead">特定製品だけに使った材料費と、複数製品を作る工場全体の減価償却費を例に、直接費と間接費、直課と配賦の違いを説明しなさい。</p>
+        <details><summary>解答例を開く</summary><div class="answer"><p>特定製品だけに使った材料費は、その製品との対応を直接確認できる直接費であり、製品へ直接集計する直課を行う。工場全体の減価償却費は複数製品に共通して発生し、特定製品へ直接跡付けできない間接費であるため、機械作業時間など合理的な基準を使って配賦する。区別の基準は費目名ではなく、特定の原価計算対象へ直接跡付けできるかどうかである。</p></div></details>
+      </article>
+
+      <article class="exercise">
+        <h3>予想問10 営業レバレッジの違いから企業のリスクを読む</h3>
+        <table class="compare-table" aria-label="予想問10の営業レバレッジ比較">
+          <thead><tr><th>会社</th><th>営業利益</th><th>営業レバレッジ係数</th><th>売上増加率</th></tr></thead>
+          <tbody>
+            <tr><td data-label="会社">A社</td><td data-label="営業利益">30万円</td><td data-label="営業レバレッジ係数">2.0</td><td data-label="売上増加率">20%</td></tr>
+            <tr><td data-label="会社">B社</td><td data-label="営業利益">30万円</td><td data-label="営業レバレッジ係数">1.5</td><td data-label="売上増加率">20%</td></tr>
+          </tbody>
+        </table>
+        <p class="question-lead">各社の営業利益増加率と増加後の営業利益を求め、景気変動への強さを比較しなさい。</p>
+        <details><summary>解答例を開く</summary><div class="answer"><p>A社の営業利益増加率は20% × 2.0 = 40%で、営業利益は42万円になる。B社は20% × 1.5 = 30%で、営業利益は39万円になる。A社は売上増加時の利益成長が大きい一方、売上減少時の利益低下も大きい。B社は利益の伸びが小さい代わりに、景気悪化時の影響も比較的小さい。したがってA社の方が固定費利用の程度と営業リスクが高い。</p></div></details>
+      </article>
+
+      <article class="exercise">
+        <h3>予想問11 なぜ直接原価計算は利益管理に向いているのか</h3>
+        <p class="question-lead">全部原価計算との違いと、在庫を増やした場合の利益への影響を含めて説明しなさい。</p>
+        <details><summary>解答例を開く</summary><div class="answer"><p>直接原価計算は、売上高から変動費を引いて限界利益を求め、当期の固定費を全額差し引くため、販売量と利益の関係をCVPの形で把握できる。全部原価計算では固定製造間接費を製品原価へ含めるため、在庫が増えると固定費の一部が棚卸資産として翌期へ繰り越され、生産量を増やしただけで当期利益が高くなる場合がある。直接原価計算はこの影響を受けにくく、短期利益計画や業績管理に使いやすい。</p></div></details>
+      </article>
+
+      <article class="exercise">
+        <h3>予想問12 原価企画・原価維持・原価改善を比較する</h3>
+        <p class="question-lead">それぞれが行われる段階、比較する原価、目的の違いを説明しなさい。</p>
+        <details><summary>解答例を開く</summary><div class="answer"><p>原価企画は企画・設計段階で目標原価と成行原価を比較し、製造開始前に原価を作り込む。原価維持は製造段階で標準原価と実際原価を比較し、標準どおりの生産を維持する。原価改善は製造段階で原価改善目標と改善額や改善見積額を比較し、工程や作業方法を継続的に見直して原価を引き下げる。設計前、標準の維持、製造後の継続改善という役割の違いがある。</p></div></details>
       </article>
     </section>
 
@@ -989,6 +1124,39 @@
       <details>
         <summary>18. VEは原価企画にどのように役立つか</summary>
         <div class="answer"><p>VEは、価値を機能と原価の関係で捉え、顧客が求める機能を維持しながら原価を下げることで価値を高める手法である。成行原価が許容原価を上回る場合に、材料、部品、構造、製造方法を見直し、必要機能を損なわずに目標原価へ近づけるために利用される。</p></div>
+      </details>
+      <h3>記述強化問題</h3>
+      <details>
+        <summary>19. 労働生産性を高めるために、単純な人員削減以外で何ができるか</summary>
+        <div class="answer"><p>労働生産性は、付加価値額を平均従業員数で割って求める。したがって、設備投資や自動化によって作業時間を短縮する、従業員教育によって技能を高める、業務工程の重複や待ち時間を減らす、高付加価値の商品やサービスへ重点を移す、といった施策が考えられる。単純な人員削減は短期的に数値を上げても、必要な業務や販売力まで失えば付加価値額が減るため、継続的な改善にならない場合がある。</p></div>
+      </details>
+      <details>
+        <summary>20. ROIだけで事業部長を評価すると、なぜ投資不足が起こり得るか</summary>
+        <div class="answer"><p>ROIは利益を投下資本で割るため、現在の事業部ROIより低い投資を受け入れると、事業部全体のROIが下がる。投資案の収益率が会社の要求収益率を上回り、全社利益を増やす案であっても、事業部長は自分の評価低下を避けるために拒否する可能性がある。残余利益は、利益から投下資本に対する資本コストを引くため、要求収益率を上回る投資を受け入れやすくし、全社目標とのずれを抑える。</p></div>
+      </details>
+      <details>
+        <summary>21. 管理不能な本社共通費を事業部へ配賦する理由</summary>
+        <div class="answer"><p>本社共通費は事業部長が直接管理できないため、人の業績評価には含めない方が公平である。一方、本社機能は各事業部の活動と企業の存続を支えるため、その費用を事業部から完全に切り離すと、各事業が企業全体で負担している原価を把握できない。本社共通費の肥大化を意識させ、事業部を含む企業全体の採算を見るためには、合理的な基準による配賦が必要になる。</p></div>
+      </details>
+      <details>
+        <summary>22. 限界利益は何に「貢献」する利益なのか</summary>
+        <div class="answer"><p>限界利益は、売上高から変動費を引いた金額であり、固定費の回収と営業利益の獲得に貢献する。販売直後は限界利益を固定費の回収へ充て、限界利益の合計が固定費と等しくなった点が損益分岐点となる。その後に増える限界利益は、固定費がすでに回収されているため営業利益の増加に結びつく。この役割から貢献利益とも呼ばれる。</p></div>
+      </details>
+      <details>
+        <summary>23. 損益分岐点と安全余裕率は、経営判断にどう役立つか</summary>
+        <div class="answer"><p>損益分岐点は営業利益がゼロになる売上高や販売量を示し、赤字を避けるために最低限必要な営業量を把握できる。安全余裕率は予定売上高が損益分岐点をどれだけ上回るかを示し、売上減少への耐久力を表す。両者を使うと、目標販売量の設定、値下げや固定費増加の影響、景気悪化時にどこまで売上減少へ耐えられるかを判断できる。</p></div>
+      </details>
+      <details>
+        <summary>24. 全部原価計算では、なぜ過剰生産が利益を押し上げることがあるのか</summary>
+        <div class="answer"><p>全部原価計算では、固定製造間接費を生産した製品へ配賦する。販売されなかった製品に含まれる固定費は期末棚卸資産となり、当期の費用ではなく翌期へ繰り越される。そのため、販売量が変わらなくても生産量を増やすと、当期に費用計上される固定費が減って利益が高くなる場合がある。ただし在庫の増加は保管費や廃棄リスクを伴うため、実態として業績が改善したとは限らない。</p></div>
+      </details>
+      <details>
+        <summary>25. 伝統的原価計算とABCでは、製造間接費の配賦基準がどう違うか</summary>
+        <div class="answer"><p>伝統的原価計算は、直接作業時間、機械作業時間、生産量など、操業度に関する基準で製造間接費を製品へ配賦する。ABCは製造間接費を組立、加工、段取、運搬などの活動別に分け、それぞれの活動回数や処理件数を使って製品へ配賦する。ABCは製品が実際に消費した活動を反映するため、多品種少量生産や間接費の比率が高い企業で原価のゆがみを小さくできる。</p></div>
+      </details>
+      <details>
+        <summary>26. 原価企画・原価維持・原価改善の役割を比較する</summary>
+        <div class="answer"><p>原価企画は企画・設計段階で目標原価を設定し、製造開始前に原価を作り込む。原価維持は製造段階で標準原価と実際原価を比較し、標準どおりの生産を維持する。原価改善は製造開始後も改善目標を設定し、工程や作業方法を見直して実際原価を継続的に引き下げる。原価企画が製品開発の源流を管理し、原価維持と原価改善が製造段階を管理する点が異なる。</p></div>
       </details>
     </section>
     </main>
